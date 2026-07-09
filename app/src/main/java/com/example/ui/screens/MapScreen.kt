@@ -35,11 +35,103 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import android.annotation.SuppressLint
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import androidx.compose.ui.viewinterop.AndroidView
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.example.data.model.EventEntity
 import com.example.data.model.RegionEntity
 import com.example.data.model.MaritimeAreaEntity
 import com.example.ui.viewmodel.OsintViewModel
 import kotlin.math.sqrt
+
+// Stylized vector-art coordinates for the seas and coastlines to draw base map
+private val BLACK_SEA_COAST = listOf(
+    Pair(41.0, 29.0), Pair(42.5, 27.5), Pair(43.5, 28.5), Pair(45.0, 29.7),
+    Pair(46.4, 30.7), Pair(46.6, 31.5), Pair(45.8, 32.4), Pair(45.5, 32.7),
+    Pair(44.6, 33.5), Pair(44.4, 34.0), Pair(45.0, 35.4), Pair(45.3, 36.5),
+    Pair(45.4, 36.8), Pair(46.0, 38.0), Pair(47.2, 39.7), Pair(47.1, 37.6),
+    Pair(46.7, 35.3), Pair(46.0, 34.8), Pair(45.3, 36.0), Pair(44.7, 37.8),
+    Pair(44.3, 38.7), Pair(43.6, 39.7), Pair(43.0, 41.0), Pair(41.6, 41.6),
+    Pair(41.3, 41.0), Pair(41.0, 39.7), Pair(41.5, 37.0), Pair(41.7, 36.0),
+    Pair(42.0, 35.0), Pair(41.9, 33.0), Pair(41.2, 31.4), Pair(41.1, 29.5),
+    Pair(41.0, 29.0)
+)
+
+private val BALTIC_SEA_COAST = listOf(
+    Pair(54.0, 11.0), Pair(54.2, 12.1), Pair(53.9, 14.3), Pair(54.2, 16.0),
+    Pair(54.4, 18.6), Pair(54.4, 19.8), Pair(54.7, 20.5), Pair(55.7, 21.1),
+    Pair(56.3, 21.0), Pair(57.4, 21.5), Pair(57.0, 24.0), Pair(58.4, 24.4),
+    Pair(58.3, 22.5), Pair(59.4, 24.8), Pair(59.5, 26.5), Pair(59.9, 29.0),
+    Pair(59.9, 30.3), Pair(60.1, 30.2), Pair(60.4, 28.7), Pair(60.2, 26.9),
+    Pair(60.2, 24.9), Pair(60.5, 22.3), Pair(61.5, 21.5), Pair(63.1, 21.6),
+    Pair(65.0, 25.5), Pair(65.8, 24.1), Pair(65.6, 22.1), Pair(63.8, 20.3),
+    Pair(62.6, 17.9), Pair(60.7, 17.3), Pair(59.3, 18.1), Pair(58.6, 16.2),
+    Pair(56.2, 15.6), Pair(55.4, 13.8), Pair(55.6, 12.5), Pair(54.0, 11.0)
+)
+
+private val NORTHERN_COAST = listOf(
+    Pair(69.7, 30.1), Pair(69.4, 31.0), Pair(68.9, 33.0), Pair(68.7, 35.0),
+    Pair(68.1, 39.8), Pair(66.2, 40.0), Pair(66.5, 34.0), Pair(64.5, 34.8),
+    Pair(64.0, 38.0), Pair(64.5, 40.5), Pair(65.8, 40.2), Pair(68.0, 44.0),
+    Pair(68.1, 48.0), Pair(68.3, 53.0), Pair(69.5, 57.0), Pair(70.0, 60.0)
+)
+
+private val UKRAINE_BORDER = listOf(
+    Pair(51.5, 23.5), Pair(52.0, 25.5), Pair(51.5, 28.0), Pair(52.3, 30.7),
+    Pair(52.2, 33.2), Pair(50.8, 34.8), Pair(50.2, 36.3), Pair(49.8, 38.0),
+    Pair(49.3, 40.1), Pair(47.8, 39.2), Pair(47.1, 38.3), Pair(46.0, 34.8),
+    Pair(45.3, 32.5), Pair(44.5, 33.5), Pair(45.4, 36.5), Pair(46.2, 32.2),
+    Pair(45.2, 29.7), Pair(46.5, 29.0), Pair(48.4, 26.6), Pair(48.0, 25.0),
+    Pair(48.3, 22.8), Pair(49.0, 22.5), Pair(50.8, 24.1), Pair(51.5, 23.5)
+)
+
+private val BELARUS_BORDER = listOf(
+    Pair(51.5, 23.5), Pair(52.0, 25.5), Pair(51.5, 28.0), Pair(52.3, 30.7),
+    Pair(52.2, 33.2), Pair(53.5, 32.5), Pair(55.0, 31.0), Pair(55.8, 30.5),
+    Pair(56.0, 28.0), Pair(54.8, 25.5), Pair(53.9, 23.5), Pair(51.5, 23.5)
+)
+
+private val NATO_EU_BORDER = listOf(
+    Pair(54.0, 11.0), Pair(54.0, 14.0), Pair(54.5, 18.0), Pair(54.3, 20.0),
+    Pair(55.8, 21.0), Pair(56.2, 21.0), Pair(57.5, 21.5), Pair(57.5, 24.3),
+    Pair(59.4, 28.0), Pair(60.0, 29.0), Pair(61.0, 29.5), Pair(65.0, 29.5),
+    Pair(69.0, 29.0)
+)
+
+private val REGION_POLYGONS = mapOf(
+    "ru_rostov_oblast" to listOf(
+        Pair(49.8, 41.5), Pair(49.5, 42.8), Pair(47.8, 43.8), Pair(46.2, 43.0),
+        Pair(46.0, 41.5), Pair(47.0, 39.5), Pair(47.8, 39.2), Pair(49.6, 39.5)
+    ),
+    "ru_krasnodar_krai" to listOf(
+        Pair(46.8, 38.0), Pair(46.5, 39.8), Pair(45.5, 41.5), Pair(43.8, 41.0),
+        Pair(43.5, 39.8), Pair(44.3, 38.7), Pair(45.1, 36.6), Pair(45.3, 36.5)
+    ),
+    "ru_leningrad_oblast" to listOf(
+        Pair(61.1, 29.0), Pair(60.8, 30.5), Pair(60.5, 33.0), Pair(60.0, 35.0),
+        Pair(58.5, 33.5), Pair(58.4, 31.5), Pair(59.0, 28.5), Pair(59.4, 28.0)
+    ),
+    "ru_murmansk_oblast" to listOf(
+        Pair(69.8, 32.5), Pair(69.0, 36.0), Pair(68.0, 40.5), Pair(66.2, 40.0),
+        Pair(66.7, 34.0), Pair(67.2, 30.0), Pair(69.0, 29.0)
+    ),
+    "ru_belgorod_oblast" to listOf(
+        Pair(51.3, 35.8), Pair(51.4, 36.6), Pair(51.1, 37.8), Pair(50.4, 38.5),
+        Pair(49.8, 38.0), Pair(50.0, 37.2), Pair(50.2, 35.6)
+    ),
+    "ru_kursk_oblast" to listOf(
+        Pair(52.4, 35.0), Pair(52.3, 36.2), Pair(52.1, 37.4), Pair(51.6, 38.4),
+        Pair(51.1, 37.8), Pair(51.3, 35.8), Pair(51.3, 34.2)
+    ),
+    "ru_voronezh_oblast" to listOf(
+        Pair(52.2, 38.0), Pair(52.3, 39.5), Pair(51.8, 41.5), Pair(50.7, 42.1),
+        Pair(49.6, 41.0), Pair(49.9, 39.5), Pair(50.8, 38.5)
+    )
+)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -61,10 +153,9 @@ fun MapScreen(
     val searchQuery by viewModel.searchQuery.collectAsState()
     val adsDisabled by viewModel.adsDisabled.collectAsState()
 
-    // Map Viewport state (Zoom & Pan)
-    var zoom by remember { mutableStateOf(4.5f) } // defaultZoom 4.2-4.8
-    var panX by remember { mutableStateOf(0f) }
-    var panY by remember { mutableStateOf(0f) }
+    // Map zoom action state
+    var zoomTrigger by remember { mutableStateOf(0) }
+    var zoomAction by remember { mutableStateOf<String?>(null) }
 
     // Dialog state for filters & legend
     var showFilterSheet by remember { mutableStateOf(false) }
@@ -84,232 +175,48 @@ fun MapScreen(
 
     val activeCategory by viewModel.selectedCategory.collectAsState()
 
+    val selectedRegion by viewModel.selectedRegion.collectAsState()
+    val selectedMaritimeArea by viewModel.selectedMaritimeArea.collectAsState()
+
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFF090D16)) // Custom premium dark canvas background
     ) {
-        // Parent Transformable State to handle Pan and Zoom gestures (page 5-6)
-        val state = rememberTransformableState { zoomChange, panChange, _ ->
-            zoom = (zoom * zoomChange).coerceIn(3.0f, 6.0f) // minZoom 3.0, maxZoom 6.0
-            panX += panChange.x
-            panY += panChange.y
-        }
-
-        // Custom Map Canvas Rendering
-        Canvas(
-            modifier = Modifier
-                .fillMaxSize()
-                .transformable(state)
-                .pointerInput(Unit) {
-                    detectTapGestures { tapOffset ->
-                        // Detect taps on events, regions or seas
-                        val width = size.width.toFloat()
-                        val height = size.height.toFloat()
-
-                        // Check events
-                        var clickedEvent: EventEntity? = null
-                        var minDistance = Float.MAX_VALUE
-
-                        events.forEach { event ->
-                            val mapOffset = getCanvasOffset(event.lat, event.lng, width, height, zoom, panX, panY)
-                            val dist = sqrt((tapOffset.x - mapOffset.x) * (tapOffset.x - mapOffset.x) + (tapOffset.y - mapOffset.y) * (tapOffset.y - mapOffset.y))
-                            if (dist < 40f && dist < minDistance) {
-                                clickedEvent = event
-                                minDistance = dist
-                            }
-                        }
-
-                        if (clickedEvent != null) {
-                            viewModel.selectEvent(clickedEvent!!)
-                        } else {
-                            // Check regions
-                            var clickedRegion: RegionEntity? = null
-                            regions.forEach { region ->
-                                val mapOffset = getCanvasOffset(region.lat, region.lng, width, height, zoom, panX, panY)
-                                val dist = sqrt((tapOffset.x - mapOffset.x) * (tapOffset.x - mapOffset.x) + (tapOffset.y - mapOffset.y) * (tapOffset.y - mapOffset.y))
-                                if (dist < 50f && dist < minDistance) {
-                                    clickedRegion = region
-                                    minDistance = dist
-                                }
-                            }
-                            if (clickedRegion != null) {
-                                viewModel.selectRegion(clickedRegion!!)
-                                onNavigateToRegionDetails()
-                            }
-                        }
-                    }
+        // Leaflet.js and OpenStreetMap real map view
+        LeafletMapView(
+            events = events,
+            regions = regions,
+            maritimeAreas = maritimeAreas,
+            selectedEventId = selectedEvent?.id,
+            selectedRegionId = selectedRegion?.regionId,
+            selectedMaritimeId = selectedMaritimeArea?.maritimeAreaId,
+            isUk = isUk,
+            onEventClick = { eventId ->
+                val ev = events.find { it.id == eventId }
+                if (ev != null) {
+                    viewModel.selectEvent(ev)
                 }
-        ) {
-            val canvasWidth = size.width
-            val canvasHeight = size.height
-
-            // 1. Draw European / Neighborhood low-detail context background (page 3-4)
-            // Draw a neutral border for Ukraine as "Excluded from dataset" (Option B, page 3)
-            val ukraineOffset = getCanvasOffset(48.3, 31.1, canvasWidth, canvasHeight, zoom, panX, panY)
-            drawCircle(
-                color = Color(0xFF1E293B),
-                radius = 120f * (zoom / 4.5f),
-                center = ukraineOffset,
-                style = Stroke(width = 1.5f, miter = 1f)
-            )
-            // Neutral mask tag for Ukraine
-            drawRoundRect(
-                color = Color(0xFF1E293B),
-                topLeft = Offset(ukraineOffset.x - 70f, ukraineOffset.y - 20f),
-                size = Size(140f, 40f),
-                cornerRadius = CornerRadius(8f, 8f)
-            )
-
-            // 2. Draw Seas and Maritime general zones (page 12)
-            maritimeAreas.forEach { area ->
-                val areaOffset = getCanvasOffset(area.lat, area.lng, canvasWidth, canvasHeight, zoom, panX, panY)
-                val colorTheme = when (area.theater) {
-                    "BLACK_SEA" -> Color(0xFF0284C7)
-                    "AZOV_SEA" -> Color(0xFF0369A1)
-                    "BALTIC_SEA" -> Color(0xFF0EA5E9)
-                    else -> Color(0xFF38BDF8)
+            },
+            onRegionClick = { regionId ->
+                val rg = regions.find { it.regionId == regionId }
+                if (rg != null) {
+                    viewModel.selectRegion(rg)
+                    onNavigateToRegionDetails()
                 }
-                // Sea boundary indication (represented as soft glowing dashed circles)
-                drawCircle(
-                    color = colorTheme.copy(alpha = 0.15f),
-                    radius = (area.defaultRadiusKm.toFloat() * 1.2f) * (zoom / 4.5f),
-                    center = areaOffset
-                )
-                drawCircle(
-                    color = colorTheme.copy(alpha = 0.4f),
-                    radius = (area.defaultRadiusKm.toFloat() * 1.2f) * (zoom / 4.5f),
-                    center = areaOffset,
-                    style = Stroke(width = 2f, pathEffect = androidx.compose.ui.graphics.PathEffect.dashPathEffect(floatArrayOf(10f, 10f), 0f))
-                )
-            }
-
-            // 3. Draw Russian Federal Subjects / Regions as Choropleths (page 4, 18)
-            regions.forEach { region ->
-                val regionOffset = getCanvasOffset(region.lat, region.lng, canvasWidth, canvasHeight, zoom, panX, panY)
-
-                // Define Choropleth color based on stress status (page 4, 9)
-                val choroplethColor = when {
-                    region.fuelStressStatus == "HIGH" || region.fiscalStressStatus == "HIGH" -> Color(0xFF991B1B) // Deep Crimson
-                    region.fuelStressStatus == "MEDIUM" || region.fiscalStressStatus == "MEDIUM" -> Color(0xFF9A3412) // Dark Amber
-                    else -> Color(0xFF1E293B) // Slate Dark
+            },
+            onMaritimeAreaClick = { areaId ->
+                val ar = maritimeAreas.find { it.maritimeAreaId == areaId }
+                if (ar != null) {
+                    viewModel.selectMaritimeArea(ar)
+                    onNavigateToMaritimeDetails()
                 }
-
-                // Draw region area choropleth circle
-                drawCircle(
-                    color = choroplethColor.copy(alpha = 0.55f),
-                    radius = (region.defaultRadiusKm.toFloat() * 1.1f) * (zoom / 4.5f),
-                    center = regionOffset
-                )
-                drawCircle(
-                    color = Color(0xFF334155).copy(alpha = 0.7f),
-                    radius = (region.defaultRadiusKm.toFloat() * 1.1f) * (zoom / 4.5f),
-                    center = regionOffset,
-                    style = Stroke(width = 1.5f)
-                )
-            }
-
-            // 4. Draw Event Approximate Zones (represented as circles, page 4, 10)
-            events.forEach { event ->
-                val eventOffset = getCanvasOffset(event.lat, event.lng, canvasWidth, canvasHeight, zoom, panX, panY)
-
-                // Circle proportional to radius (min 50km, page 10)
-                val circleRadius = event.radiusKm.toFloat() * (zoom / 4.5f)
-
-                val pulseColor = when (event.category) {
-                    "ENERGY_EXPORT_DISRUPTION" -> Color(0xFFEF4444) // Neon Red
-                    "SHADOW_FLEET_SANCTIONS" -> Color(0xFFF59E0B) // Amber
-                    "PORT_LOGISTICS_DISRUPTION" -> Color(0xFF10B981) // Emerald
-                    else -> Color(0xFFD946EF) // Magenta
-                }
-
-                // Draw glowing outer area
-                drawCircle(
-                    color = pulseColor.copy(alpha = 0.18f),
-                    radius = circleRadius,
-                    center = eventOffset
-                )
-                drawCircle(
-                    color = pulseColor.copy(alpha = 0.5f),
-                    radius = circleRadius,
-                    center = eventOffset,
-                    style = Stroke(width = 1.5f)
-                )
-
-                // Central high-contrast marker point
-                drawCircle(
-                    color = Color.White,
-                    radius = 8f,
-                    center = eventOffset
-                )
-                drawCircle(
-                    color = pulseColor,
-                    radius = 5f,
-                    center = eventOffset
-                )
-            }
-        }
-
-        // Map Label Overlays (Clean text labels rendered precisely over Canvas points)
-        Box(modifier = Modifier.fillMaxSize()) {
-            // Ukraine label
-            BoxWithConstraints {
-                val ukOffset = getCanvasOffset(48.3, 31.1, constraints.maxWidth.toFloat(), constraints.maxHeight.toFloat(), zoom, panX, panY)
-                Text(
-                    text = if (isUk) "УКРАЇНА\n(ПОЗА НАБОРОМ ДАНИХ)" else "UKRAINE\n(EXCLUDED FROM DATASET)",
-                    color = Color(0xFF64748B),
-                    fontSize = 9.sp,
-                    fontWeight = FontWeight.Bold,
-                    fontFamily = FontFamily.Monospace,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.offset(
-                        x = (ukOffset.x / density).dp - 65.dp,
-                        y = (ukOffset.y / density).dp - 15.dp
-                    )
-                )
-            }
-
-            // Russian Region Labels (Rendered only on suitable zoom levels)
-            if (zoom >= 4.0f) {
-                regions.forEach { region ->
-                    BoxWithConstraints {
-                        val offset = getCanvasOffset(region.lat, region.lng, constraints.maxWidth.toFloat(), constraints.maxHeight.toFloat(), zoom, panX, panY)
-                        Text(
-                            text = if (isUk) region.nameUk else region.nameEn,
-                            color = Color(0xFFE2E8F0),
-                            fontSize = 10.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            fontFamily = FontFamily.SansSerif,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .offset(
-                                    x = (offset.x / density).dp - 50.dp,
-                                    y = (offset.y / density).dp - 25.dp
-                                )
-                                .width(100.dp)
-                        )
-                    }
-                }
-            }
-
-            // Seas Labels
-            maritimeAreas.forEach { area ->
-                BoxWithConstraints {
-                    val offset = getCanvasOffset(area.lat, area.lng, constraints.maxWidth.toFloat(), constraints.maxHeight.toFloat(), zoom, panX, panY)
-                    Text(
-                        text = if (isUk) area.nameUk else area.nameEn,
-                        color = Color(0xFF38BDF8),
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.Bold,
-                        fontFamily = FontFamily.Monospace,
-                        modifier = Modifier.offset(
-                            x = (offset.x / density).dp - 40.dp,
-                            y = (offset.y / density).dp - 8.dp
-                        )
-                    )
-                }
-            }
-        }
+            },
+            zoomTrigger = zoomTrigger,
+            zoomAction = zoomAction,
+            onZoomActionConsumed = { zoomAction = null },
+            modifier = Modifier.fillMaxSize()
+        )
 
         // Top Search Bar & Category Chips (page 9)
         Column(
@@ -415,7 +322,10 @@ fun MapScreen(
                 .padding(end = 16.dp)
         ) {
             FloatingActionButton(
-                onClick = { zoom = (zoom + 0.3f).coerceAtMost(6.0f) },
+                onClick = {
+                    zoomAction = "IN"
+                    zoomTrigger++
+                },
                 containerColor = Color(0xFF0F172A),
                 contentColor = Color.White,
                 modifier = Modifier.size(45.dp)
@@ -426,12 +336,29 @@ fun MapScreen(
             Spacer(modifier = Modifier.height(8.dp))
 
             FloatingActionButton(
-                onClick = { zoom = (zoom - 0.3f).coerceAtLeast(3.0f) },
+                onClick = {
+                    zoomAction = "OUT"
+                    zoomTrigger++
+                },
                 containerColor = Color(0xFF0F172A),
                 contentColor = Color.White,
                 modifier = Modifier.size(45.dp)
             ) {
                 Icon(imageVector = Icons.Default.Remove, contentDescription = "Zoom Out")
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            FloatingActionButton(
+                onClick = {
+                    zoomAction = "RESET"
+                    zoomTrigger++
+                },
+                containerColor = Color(0xFF0F172A),
+                contentColor = Color.White,
+                modifier = Modifier.size(45.dp)
+            ) {
+                Icon(imageVector = Icons.Default.Refresh, contentDescription = "Reset View")
             }
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -762,36 +689,427 @@ fun LegendRow(color: Color, label: String) {
     }
 }
 
-// Convert Lat Lng to Canvas Grid coordinates with zoom/pan
-fun getCanvasOffset(
-    lat: Double,
-    lng: Double,
-    width: Float,
-    height: Float,
-    zoom: Float,
-    panX: Float,
-    panY: Float
-): Offset {
-    // Limits of our strategic map (covers European Russia & adjacent seas)
-    // Longitude from 10.0 (Western Europe) to 60.0 (Ural Mountains)
-    // Latitude from 72.0 (Murmansk) to 42.0 (Black Sea)
-    val minLng = 10.0
-    val maxLng = 60.0
-    val minLat = 42.0
-    val maxLat = 72.0
+@com.squareup.moshi.JsonClass(generateAdapter = true)
+data class MapEventDto(
+    val id: String,
+    val lat: Double,
+    val lng: Double,
+    val radiusKm: Int,
+    val category: String,
+    val titleEn: String,
+    val titleUk: String
+)
 
-    val xPct = (lng - minLng) / (maxLng - minLng)
-    val yPct = (maxLat - lat) / (maxLat - minLat)
+@com.squareup.moshi.JsonClass(generateAdapter = true)
+data class MapRegionDto(
+    val regionId: String,
+    val lat: Double,
+    val lng: Double,
+    val defaultRadiusKm: Int,
+    val fuelStressStatus: String,
+    val fiscalStressStatus: String,
+    val nameEn: String,
+    val nameUk: String
+)
 
-    val x = xPct.toFloat() * width
-    val y = yPct.toFloat() * height
+@com.squareup.moshi.JsonClass(generateAdapter = true)
+data class MapMaritimeDto(
+    val maritimeAreaId: String,
+    val lat: Double,
+    val lng: Double,
+    val defaultRadiusKm: Int,
+    val theater: String,
+    val nameEn: String,
+    val nameUk: String
+)
 
-    val cx = width / 2f
-    val cy = height / 2f
+@SuppressLint("SetJavaScriptEnabled")
+@Composable
+fun LeafletMapView(
+    events: List<EventEntity>,
+    regions: List<RegionEntity>,
+    maritimeAreas: List<MaritimeAreaEntity>,
+    selectedEventId: String?,
+    selectedRegionId: String?,
+    selectedMaritimeId: String?,
+    isUk: Boolean,
+    onEventClick: (String) -> Unit,
+    onRegionClick: (String) -> Unit,
+    onMaritimeAreaClick: (String) -> Unit,
+    zoomTrigger: Int,
+    zoomAction: String?,
+    onZoomActionConsumed: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val html = remember { getMapHtml() }
 
-    // Scale from center & add pan
-    val zx = (x - cx) * zoom + cx + panX
-    val zy = (y - cy) * zoom + cy + panY
+    val moshi = remember { Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build() }
+    val eventsAdapter = remember { moshi.adapter<List<MapEventDto>>(Types.newParameterizedType(List::class.java, MapEventDto::class.java)) }
+    val regionsAdapter = remember { moshi.adapter<List<MapRegionDto>>(Types.newParameterizedType(List::class.java, MapRegionDto::class.java)) }
+    val maritimeAdapter = remember { moshi.adapter<List<MapMaritimeDto>>(Types.newParameterizedType(List::class.java, MapMaritimeDto::class.java)) }
 
-    return Offset(zx, zy)
+    val eventsDto = remember(events) {
+        events.map { MapEventDto(it.id, it.lat, it.lng, it.radiusKm, it.category, it.titleEn, it.titleUk) }
+    }
+    val regionsDto = remember(regions) {
+        regions.map { MapRegionDto(it.regionId, it.lat, it.lng, it.defaultRadiusKm, it.fuelStressStatus, it.fiscalStressStatus, it.nameEn, it.nameUk) }
+    }
+    val maritimeDto = remember(maritimeAreas) {
+        maritimeAreas.map { MapMaritimeDto(it.maritimeAreaId, it.lat, it.lng, it.defaultRadiusKm, it.theater, it.nameEn, it.nameUk) }
+    }
+
+    val eventsJson = remember(eventsDto) { eventsAdapter.toJson(eventsDto) }
+    val regionsJson = remember(regionsDto) { regionsAdapter.toJson(regionsDto) }
+    val maritimeJson = remember(maritimeDto) { maritimeAdapter.toJson(maritimeDto) }
+
+    var webViewRef by remember { mutableStateOf<WebView?>(null) }
+    var isLoaded by remember { mutableStateOf(false) }
+
+    LaunchedEffect(eventsJson, regionsJson, maritimeJson, selectedEventId, selectedRegionId, selectedMaritimeId, isUk, isLoaded) {
+        val webView = webViewRef
+        if (webView != null && isLoaded) {
+            val escapedEvents = eventsJson.replace("'", "\\'")
+            val escapedRegions = regionsJson.replace("'", "\\'")
+            val escapedMaritime = maritimeJson.replace("'", "\\'")
+
+            val js = "setMapData('$escapedEvents', '$escapedRegions', '$escapedMaritime', " +
+                    "${if (selectedEventId != null) "'$selectedEventId'" else "null"}, " +
+                    "${if (selectedRegionId != null) "'$selectedRegionId'" else "null"}, " +
+                    "${if (selectedMaritimeId != null) "'$selectedMaritimeId'" else "null"}, $isUk);"
+            webView.evaluateJavascript(js, null)
+        }
+    }
+
+    LaunchedEffect(zoomTrigger) {
+        val webView = webViewRef
+        if (webView != null && isLoaded && zoomAction != null) {
+            when (zoomAction) {
+                "IN" -> webView.evaluateJavascript("zoomIn();", null)
+                "OUT" -> webView.evaluateJavascript("zoomOut();", null)
+                "RESET" -> webView.evaluateJavascript("resetView();", null)
+            }
+            onZoomActionConsumed()
+        }
+    }
+
+    AndroidView(
+        factory = { ctx ->
+            WebView(ctx).apply {
+                webViewRef = this
+                settings.apply {
+                    javaScriptEnabled = true
+                    domStorageEnabled = true
+                    loadWithOverviewMode = true
+                    useWideViewPort = true
+                }
+
+                addJavascriptInterface(object {
+                    @android.webkit.JavascriptInterface
+                    fun onEventClick(eventId: String) {
+                        onEventClick(eventId)
+                    }
+
+                    @android.webkit.JavascriptInterface
+                    fun onRegionClick(regionId: String) {
+                        onRegionClick(regionId)
+                    }
+
+                    @android.webkit.JavascriptInterface
+                    fun onMaritimeAreaClick(areaId: String) {
+                        onMaritimeAreaClick(areaId)
+                    }
+                }, "AndroidBridge")
+
+                webViewClient = object : WebViewClient() {
+                    override fun onPageFinished(view: WebView?, url: String?) {
+                        super.onPageFinished(view, url)
+                        isLoaded = true
+                    }
+                }
+
+                loadDataWithBaseURL("https://openstreetmap.org", html, "text/html", "UTF-8", null)
+            }
+        },
+        modifier = modifier
+    )
+}
+
+private fun getMapHtml(): String {
+    return """
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+            <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+            <style>
+                html, body, #map {
+                    width: 100%;
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                    background-color: #090D16;
+                }
+                .leaflet-container {
+                    background: #090D16;
+                }
+                .leaflet-bar a {
+                    background-color: #0f172a !important;
+                    color: #ffffff !important;
+                    border: 1px solid #334155 !important;
+                }
+            </style>
+        </head>
+        <body>
+            <div id="map"></div>
+            <script>
+                var REGION_POLYGONS = {
+                    "ru_rostov_oblast": [
+                        [49.8, 41.5], [49.5, 42.8], [47.8, 43.8], [46.2, 43.0],
+                        [46.0, 41.5], [47.0, 39.5], [47.8, 39.2], [49.6, 39.5]
+                    ],
+                    "ru_krasnodar_krai": [
+                        [46.8, 38.0], [46.5, 39.8], [45.5, 41.5], [43.8, 41.0],
+                        [43.5, 39.8], [44.3, 38.7], [45.1, 36.6], [45.3, 36.5]
+                    ],
+                    "ru_leningrad_oblast": [
+                        [61.1, 29.0], [60.8, 30.5], [60.5, 33.0], [60.0, 35.0],
+                        [58.5, 33.5], [58.4, 31.5], [59.0, 28.5], [59.4, 28.0]
+                    ],
+                    "ru_murmansk_oblast": [
+                        [69.8, 32.5], [69.0, 36.0], [68.0, 40.5], [66.2, 40.0],
+                        [66.7, 34.0], [67.2, 30.0], [69.0, 29.0]
+                    ],
+                    "ru_belgorod_oblast": [
+                        [51.3, 35.8], [51.4, 36.6], [51.1, 37.8], [50.4, 38.5],
+                        [49.8, 38.0], [50.0, 37.2], [50.2, 35.6]
+                    ],
+                    "ru_kursk_oblast": [
+                        [52.4, 35.0], [52.3, 36.2], [52.1, 37.4], [51.6, 38.4],
+                        [51.1, 37.8], [51.3, 35.8], [51.3, 34.2]
+                    ],
+                    "ru_voronezh_oblast": [
+                        [52.2, 38.0], [52.3, 39.5], [51.8, 41.5], [50.7, 42.1],
+                        [49.6, 41.0], [49.9, 39.5], [50.8, 38.5]
+                    ]
+                };
+
+                var UKRAINE_BORDER = [
+                    [51.5, 23.5], [52.0, 25.5], [51.5, 28.0], [52.3, 30.7],
+                    [52.2, 33.2], [50.8, 34.8], [50.2, 36.3], [49.8, 38.0],
+                    [49.3, 40.1], [47.8, 39.2], [47.1, 38.3], [46.0, 34.8],
+                    [45.3, 32.5], [44.5, 33.5], [45.4, 36.5], [46.2, 32.2],
+                    [45.2, 29.7], [46.5, 29.0], [48.4, 26.6], [48.0, 25.0],
+                    [48.3, 22.8], [49.0, 22.5], [50.8, 24.1], [51.5, 23.5]
+                ];
+
+                var BELARUS_BORDER = [
+                    [51.5, 23.5], [52.0, 25.5], [51.5, 28.0], [52.3, 30.7],
+                    [52.2, 33.2], [53.5, 32.5], [55.0, 31.0], [55.8, 30.5],
+                    [56.0, 28.0], [54.8, 25.5], [53.9, 23.5], [51.5, 23.5]
+                ];
+
+                var NATO_EU_BORDER = [
+                    [54.0, 11.0], [54.0, 14.0], [54.5, 18.0], [54.3, 20.0],
+                    [55.8, 21.0], [56.2, 21.0], [57.5, 21.5], [57.5, 24.3],
+                    [59.4, 28.0], [60.0, 29.0], [61.0, 29.5], [65.0, 29.5],
+                    [69.0, 29.0]
+                ];
+
+                var map = L.map('map', {
+                    zoomControl: false,
+                    attributionControl: false
+                }).setView([55.0, 37.0], 5);
+
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                    maxZoom: 18,
+                    minZoom: 3
+                }).addTo(map);
+
+                L.polyline(NATO_EU_BORDER, {
+                    color: '#64748B',
+                    weight: 2,
+                    dashArray: '10, 10',
+                    interactive: false
+                }).addTo(map);
+
+                L.polygon(UKRAINE_BORDER, {
+                    color: '#3B82F6',
+                    fillColor: '#14243C',
+                    fillOpacity: 0.25,
+                    weight: 2.5,
+                    interactive: false
+                }).addTo(map);
+
+                L.polygon(BELARUS_BORDER, {
+                    color: '#475569',
+                    fillColor: '#192239',
+                    fillOpacity: 0.25,
+                    weight: 1.5,
+                    interactive: false
+                }).addTo(map);
+
+                var eventMarkers = {};
+                var regionPolygons = {};
+                var maritimeCircles = {};
+
+                function zoomIn() { map.zoomIn(); }
+                function zoomOut() { map.zoomOut(); }
+                function resetView() { map.setView([55.0, 37.0], 5); }
+
+                function clearMap() {
+                    for (var id in eventMarkers) {
+                        map.removeLayer(eventMarkers[id].circle);
+                        map.removeLayer(eventMarkers[id].marker);
+                    }
+                    for (var id in regionPolygons) {
+                        map.removeLayer(regionPolygons[id]);
+                    }
+                    for (var id in maritimeCircles) {
+                        map.removeLayer(maritimeCircles[id]);
+                    }
+                    eventMarkers = {};
+                    regionPolygons = {};
+                    maritimeCircles = {};
+                }
+
+                function selectRegion(regionId) {
+                    if (window.AndroidBridge) {
+                        window.AndroidBridge.onRegionClick(regionId);
+                    }
+                }
+
+                function selectEvent(eventId) {
+                    if (window.AndroidBridge) {
+                        window.AndroidBridge.onEventClick(eventId);
+                    }
+                }
+
+                function selectMaritimeArea(areaId) {
+                    if (window.AndroidBridge) {
+                        window.AndroidBridge.onMaritimeAreaClick(areaId);
+                    }
+                }
+
+                function setMapData(eventsJson, regionsJson, maritimeJson, selectedEventId, selectedRegionId, selectedMaritimeId, isUk) {
+                    clearMap();
+
+                    var maritime = JSON.parse(maritimeJson);
+                    maritime.forEach(function(area) {
+                        var color = "#0284c7";
+                        if (area.theater === "BLACK_SEA") color = "#0284c7";
+                        else if (area.theater === "AZOV_SEA") color = "#0369a1";
+                        else if (area.theater === "BALTIC_SEA") color = "#0ea5e9";
+
+                        var isSelected = area.maritimeAreaId === selectedMaritimeId;
+                        var circle = L.circle([area.lat, area.lng], {
+                            color: color,
+                            fillColor: color,
+                            fillOpacity: isSelected ? 0.3 : 0.1,
+                            radius: area.defaultRadiusKm * 1000,
+                            weight: isSelected ? 3.5 : 2,
+                            dashArray: '5, 5'
+                        }).addTo(map);
+
+                        circle.bindTooltip(isUk ? area.nameUk : area.nameEn, { permanent: false, direction: 'top' });
+
+                        circle.on('click', function() {
+                            selectMaritimeArea(area.maritimeAreaId);
+                        });
+
+                        maritimeCircles[area.maritimeAreaId] = circle;
+
+                        if (isSelected) {
+                            map.setView([area.lat, area.lng], map.getZoom());
+                        }
+                    });
+
+                    var regions = JSON.parse(regionsJson);
+                    regions.forEach(function(region) {
+                        var color = "#10b981";
+                        if (region.fuelStressStatus === "HIGH" || region.fiscalStressStatus === "HIGH") {
+                            color = "#ef4444";
+                        } else if (region.fuelStressStatus === "MEDIUM" || region.fiscalStressStatus === "MEDIUM") {
+                            color = "#f59e0b";
+                        }
+
+                        var polygonCoords = REGION_POLYGONS[region.regionId];
+                        var isSelected = region.regionId === selectedRegionId;
+                        var layer;
+
+                        if (polygonCoords) {
+                            layer = L.polygon(polygonCoords, {
+                                color: color,
+                                fillColor: color,
+                                fillOpacity: isSelected ? 0.5 : 0.25,
+                                weight: isSelected ? 3 : 1.5
+                            }).addTo(map);
+                        } else {
+                            layer = L.circle([region.lat, region.lng], {
+                                color: color,
+                                fillColor: color,
+                                fillOpacity: isSelected ? 0.5 : 0.25,
+                                radius: region.defaultRadiusKm * 1000,
+                                weight: isSelected ? 3 : 1.5
+                            }).addTo(map);
+                        }
+
+                        layer.bindTooltip(isUk ? region.nameUk : region.nameEn, { permanent: false, direction: 'center' });
+
+                        layer.on('click', function() {
+                            selectRegion(region.regionId);
+                        });
+
+                        regionPolygons[region.regionId] = layer;
+
+                        if (isSelected) {
+                            map.setView([region.lat, region.lng], map.getZoom());
+                        }
+                    });
+
+                    var evs = JSON.parse(eventsJson);
+                    evs.forEach(function(event) {
+                        var pulseColor = "#ef4444";
+                        if (event.category === "ENERGY_EXPORT_DISRUPTION") pulseColor = "#ef4444";
+                        else if (event.category === "SHADOW_FLEET_SANCTIONS") pulseColor = "#f59e0b";
+                        else if (event.category === "MARITIME_REGIONAL_SECURITY") pulseColor = "#0ea5e9";
+
+                        var isSelected = event.id === selectedEventId;
+
+                        var circle = L.circle([event.lat, event.lng], {
+                            color: pulseColor,
+                            fillColor: pulseColor,
+                            fillOpacity: isSelected ? 0.4 : 0.15,
+                            radius: event.radiusKm * 1000,
+                            weight: isSelected ? 2.5 : 1
+                        }).addTo(map);
+
+                        var marker = L.circleMarker([event.lat, event.lng], {
+                            radius: isSelected ? 8 : 5,
+                            fillColor: isSelected ? '#fef08a' : '#ffffff',
+                            fillOpacity: 1,
+                            color: pulseColor,
+                            weight: 2
+                        }).addTo(map);
+
+                        marker.bindTooltip(isUk ? event.titleUk : event.titleEn, { permanent: false });
+
+                        var selectFn = function() {
+                            selectEvent(event.id);
+                        };
+
+                        circle.on('click', selectFn);
+                        marker.on('click', selectFn);
+
+                        eventMarkers[event.id] = { circle: circle, marker: marker };
+
+                        if (isSelected) {
+                            map.setView([event.lat, event.lng], map.getZoom());
+                        }
+                    });
+                }
+            </script>
+        </body>
+        </html>
+    """.trimIndent()
 }
