@@ -15,4 +15,8 @@
 .cxx
 local.properties
 .env
+admob-config.local.txt
 debug.keystore
+
+# Raw Natural Earth downloads used by tools/build_basemap.py (regenerable, ~50 MB)
+/tools/basemap_src/

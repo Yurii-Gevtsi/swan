@@ -22,6 +22,7 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "The Black Swan"
+// Gradle project names cannot contain a colon; the user-facing app name is in strings.xml.
+rootProject.name = "Black Swan War Impact Map"
 
 include(":app")
