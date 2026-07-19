@@ -27,7 +27,7 @@ powershell -ExecutionPolicy Bypass -File .\tools\update-from-wikipedia-uav-strik
 
 The aggregate dataset is stored in `data/final/region_attack_totals_2026.json` and bundled as `app/src/main/assets/region_attack_totals_2026.json`. In the app, open the map and select `Attack totals` to display the region gradient and date breakdown.
 
-The narrative event register is stored in `data/final/special_events_2022_2025.json` and bundled as `app/src/main/assets/special_events_2022_2025.json`. It contains the Crimean Bridge, A-50/Il-22M, Russian bridge, and Operation Spiderweb groups without importing article tables.
+The narrative event register is stored in `data/final/special_events_2022_2025.json` and bundled as `app/src/main/assets/special_events_2022_2025.json`. It contains grouped narrative events plus a dedicated `operations` list for the Total -> Special operations tab, including MoLoCHKa, Operation Spiderweb, Crimean Bridge strikes, and other curated special operations without importing article tables.
 
 ## Public website
 
@@ -47,3 +47,22 @@ firebase.cmd deploy --only hosting
 ```
 
 `deploy-hosting.bat` runs the deployment command after Firebase CLI is installed and authenticated. The initial Hosting URL is expected to be `https://gy-signal-studio.web.app`. Before enabling an ad network, replace the placeholder in `site/app-ads.txt` with that network's verified seller declaration.
+
+## Localization guardrails
+
+All human-readable text files and published JSON snapshots must stay in UTF-8. Before publishing or after changing localized text, run:
+
+```powershell
+python .\tools\validate-localization.py
+python .\tools\validate-map-coverage.py
+```
+
+The validator fails on:
+
+- mojibake or broken Cyrillic sequences;
+- English `*En` fields that still contain Cyrillic;
+- empty or obviously untranslated `*En` fields when a paired `*Uk` field already has text.
+
+`validate-map-coverage.py` fails if an event from the final data package is no
+longer represented by the generated map marker groups or if a group points to a
+missing event id.

@@ -14,8 +14,8 @@ android {
     applicationId = "com.gysignalstudio.blackswan"
     minSdk = 24
     targetSdk = 36
-    versionCode = 1
-    versionName = "1.0.0"
+    versionCode = 3
+    versionName = "1.0.3"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
@@ -86,7 +86,10 @@ dependencies {
   implementation(libs.androidx.compose.ui.tooling.preview)
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.datastore.preferences)
+  implementation("com.android.billingclient:billing:9.1.0")
   implementation(libs.play.services.ads)
+  implementation(libs.play.review)
+  implementation(libs.play.review.ktx)
   implementation(libs.user.messaging.platform)
   implementation(libs.androidx.lifecycle.runtime.compose)
   implementation(libs.androidx.lifecycle.runtime.ktx)
