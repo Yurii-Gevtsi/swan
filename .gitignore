@@ -31,3 +31,10 @@ tmp/
 
 # Raw Natural Earth downloads used by tools/build_basemap.py (regenerable, ~50 MB)
 /tools/basemap_src/
+
+# Local Firebase CLI cache and build output
+/.firebase/
+/app/release/
+
+# Personal IDE device list
+/.idea/deviceManager.xml

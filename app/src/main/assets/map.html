@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="leaflet.css" />
+    <script src="leaflet.js"></script>
+    <script src="basemap.js"></script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #090D16;
+        }
+        /* Fixed positioning: Android WebView can fail to resolve the html/body
+           percentage-height chain, which left #map 0px tall (black screen). */
+        #map {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #090D16;
+        }
+        .leaflet-container {
+            background: #090D16;
+        }
+        html.light-map,
+        html.light-map body,
+        html.light-map #map,
+        html.light-map .leaflet-container {
+            background: #EAF0F7;
+        }
+        .leaflet-map-pane,
+        .leaflet-overlay-pane,
+        .leaflet-marker-pane {
+            backface-visibility: hidden;
+            will-change: transform;
+        }
+        .leaflet-bar a {
+            background-color: #0f172a !important;
+            color: #ffffff !important;
+            border: 1px solid #334155 !important;
+        }
+        .city-label {
+            background: transparent;
+            border: 0;
+            box-shadow: none;
+            color: #dbeafe;
+            font: 600 12px/1.2 sans-serif;
+            text-shadow: 0 1px 2px #020617, 0 1px 2px #020617;
+        }
+        html.light-map .city-label {
+            color: #334155;
+            text-shadow: 0 1px 2px #ffffff, 0 1px 2px #ffffff;
+        }
+        .attack-total-label {
+            background: rgba(15, 23, 42, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            border-radius: 999px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+            color: #ffffff;
+            font: 700 12px/24px sans-serif;
+            height: 24px !important;
+            min-width: 24px !important;
+            padding: 0 5px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .regional-metric-label {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 999px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+            color: #ffffff;
+            font: 700 11px/24px sans-serif;
+            height: 24px !important;
+            min-width: 24px !important;
+            padding: 0 5px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        /* Zoomed far out the numbers overlap into an unreadable mess, so the
+           regional layers show colour only until the user zooms in. */
+        .hide-metric-labels .attack-total-label,
+        .hide-metric-labels .regional-metric-label {
+            display: none;
+        }
+        .event-cluster-wrapper,
+        .event-count-wrapper {
+            background: transparent;
+            border: 0;
+        }
+        .event-fire-icon {
+            align-items: center;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+        }
+        .event-fire-wrapper {
+            background: transparent;
+            border: 0;
+        }
+        .event-fire-marker {
+            display: block;
+            filter: drop-shadow(0 2px 5px rgba(2, 6, 23, 0.72));
+            height: 100%;
+            width: 100%;
+        }
+        .event-fire-marker.selected {
+            filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0.95)) drop-shadow(0 3px 7px rgba(2, 6, 23, 0.78));
+            transform: scale(1.08);
+        }
+        .event-fire-count {
+            background: rgba(15, 23, 42, 0.78);
+            border: 1px solid rgba(255, 255, 255, 0.74);
+            border-radius: 999px;
+            bottom: 1px;
+            box-shadow: 0 1px 3px rgba(2, 6, 23, 0.72);
+            color: #ffffff;
+            font: 800 10px/1 sans-serif;
+            left: 50%;
+            min-width: 16px;
+            padding: 2px 4px;
+            position: absolute;
+            text-align: center;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="major_cities_ru.js"></script>
+    <script>
+        var HOME_CENTER = [52.0, 55.0];
+        var HOME_ZOOM = 3.5; // one step tighter than the full Europe--Russia overview
+        var map = L.map('map', {
+            zoomControl: false,
+            attributionControl: false,
+            minZoom: 3,
+            maxZoom: 9.5,
+            zoomSnap: 0.5,
+            zoomDelta: 0.5,
+            maxBounds: [[33.0, -12.0], [75.0, 145.0]],
+            maxBoundsViscosity: 1.0,
+            preferCanvas: true,
+            inertiaMaxSpeed: 1200,
+            inertiaDeceleration: 5000,
+            // Animated zoom silently stalls in this Android WebView when #map is
+            // position:fixed (getZoom never advances). Instant zoom works reliably.
+            zoomAnimation: false,
+            markerZoomAnimation: false
+        }).setView(HOME_CENTER, HOME_ZOOM);
+
+        // Leaflet normally buffers only 10% outside the visible viewport. Fast
+        // Android swipes can expose that unpainted area. These separate canvases
+        // retain a much larger pre-rendered area without making dynamic markers
+        // redraw as part of the static basemap.
+        var basemapRenderer = L.canvas({ padding: 0.75 });
+        var dataRenderer = L.canvas({ padding: 0.50, tolerance: 12 });
+
+        // Tapping empty map space (or a region/maritime zone) dismisses the event card;
+        // event handlers set this flag to keep their own tap from bubbling into a dismiss.
+        var suppressMapClick = false;
+        map.on('click', function() {
+            if (suppressMapClick) {
+                suppressMapClick = false;
+                return;
+            }
+            if (window.AndroidBridge && window.AndroidBridge.onMapClick) {
+                window.AndroidBridge.onMapClick();
+            }
+        });
+
+        // --- Offline vector basemap (Natural Earth, bundled in basemap.js) ---
+        var DEFAULT_LAND_STYLE = {
+            color: '#243248', weight: 0.8, opacity: 0.9,
+            fillColor: '#111A2A', fillOpacity: 1, interactive: false
+        };
+        var COUNTRY_STYLES = {
+            'Ukraine': { color: '#3B82F6', weight: 2, opacity: 1, fillColor: '#14243C', fillOpacity: 1, interactive: false },
+            'Russia':  { color: '#EF4444', weight: 2, opacity: 1, fillColor: '#171321', fillOpacity: 1, interactive: false },
+            'Belarus': { color: '#475569', weight: 1.2, opacity: 1, fillColor: '#131B29', fillOpacity: 1, interactive: false }
+        };
+        var DEFAULT_LAND_STYLE_LIGHT = {
+            color: '#94A3B8', weight: 0.8, opacity: 0.9,
+            fillColor: '#E2E8F0', fillOpacity: 1, interactive: false
+        };
+        var COUNTRY_STYLES_LIGHT = {
+            'Ukraine': { color: '#2563EB', weight: 2, opacity: 1, fillColor: '#DBEAFE', fillOpacity: 1, interactive: false },
+            'Russia':  { color: '#DC2626', weight: 2, opacity: 1, fillColor: '#F8FAFC', fillOpacity: 1, interactive: false },
+            'Belarus': { color: '#64748B', weight: 1.2, opacity: 1, fillColor: '#E2E8F0', fillOpacity: 1, interactive: false }
+        };
+        var basemapCountryLayers = [];
+        var basemapAdminLayers = [];
+
+        // basemap.js stores [lon, lat]; Leaflet wants [lat, lng]
+        function toLatLngs(polygons) {
+            return polygons.map(function(poly) {
+                return poly.map(function(ring) {
+                    return ring.map(function(pt) { return [pt[1], pt[0]]; });
+                });
+            });
+        }
+
+        BASEMAP.countries.forEach(function(country) {
+            var style = COUNTRY_STYLES[country.name] || DEFAULT_LAND_STYLE;
+            var layer = L.polygon(
+                toLatLngs(country.polygons),
+                Object.assign({ renderer: basemapRenderer }, style)
+            ).addTo(map);
+            basemapCountryLayers.push({ name: country.name, layer: layer });
+        });
+
+        // Oblast / admin-1 contours for UA, RU, BY
+        var ADMIN1_BY_ISO = {};
+        BASEMAP.admin1.forEach(function(area) {
+            ADMIN1_BY_ISO[area.iso] = area;
+            var layer = L.polygon(toLatLngs(area.polygons), {
+                color: '#2E4160', weight: 0.8, opacity: 0.8,
+                fill: false, interactive: false, renderer: basemapRenderer
+            }).addTo(map);
+            basemapAdminLayers.push(layer);
+        });
+
+        // Clickable stress regions -> real oblast shapes
+        var REGION_ISO = {
+            'ru_rostov_oblast': 'RU-ROS',
+            'ru_krasnodar_krai': 'RU-KDA',
+            'ru_leningrad_oblast': 'RU-LEN',
+            'ru_murmansk_oblast': 'RU-MUR',
+            'ru_belgorod_oblast': 'RU-BEL',
+            'ru_kursk_oblast': 'RU-KRS',
+            'ru_voronezh_oblast': 'RU-VOR'
+        };
+
+        function setMapTheme(isDark) {
+            document.documentElement.classList.toggle('light-map', !isDark);
+
+            basemapCountryLayers.forEach(function(entry) {
+                var styles = isDark ? COUNTRY_STYLES : COUNTRY_STYLES_LIGHT;
+                var fallback = isDark ? DEFAULT_LAND_STYLE : DEFAULT_LAND_STYLE_LIGHT;
+                entry.layer.setStyle(styles[entry.name] || fallback);
+            });
+
+            basemapAdminLayers.forEach(function(layer) {
+                layer.setStyle({ color: isDark ? '#2E4160' : '#CBD5E1' });
+            });
+        }
+
+        var eventMarkers = {};
+        var currentMapEvents = [];
+        var currentSelectedEventGroupId = null;
+        var currentIsUk = true;
+        var regionPolygons = {};
+        var maritimeCircles = {};
+        var aggregateRegionPolygons = {};
+        var aggregateRegionLabels = {};
+        var cityMarkers = [];
+        var currentCityLabelRank = -1;
+        var CONTEXT_CITIES = [
+            { en: 'Kyiv', uk: 'Київ', lat: 50.4501, lng: 30.5234, rank: 1, admin1: 'ua_kyiv' },
+            { en: 'Kharkiv', uk: 'Харків', lat: 49.9935, lng: 36.2304, rank: 1, admin1: 'ua_kharkiv' },
+            { en: 'Odesa', uk: 'Одеса', lat: 46.4825, lng: 30.7233, rank: 1, admin1: 'ua_odesa' },
+            { en: 'Dnipro', uk: 'Дніпро', lat: 48.4647, lng: 35.0462, rank: 1, admin1: 'ua_dnipro' },
+            { en: 'Lviv', uk: 'Львів', lat: 49.8397, lng: 24.0297, rank: 1, admin1: 'ua_lviv' },
+            { en: 'Minsk', uk: 'Мінськ', lat: 53.9006, lng: 27.5590, rank: 1, admin1: 'by_minsk' }
+        ];
+        var PRIORITY_CITY_NAMES = ['Kyiv', 'Minsk', 'Kharkiv', 'Odesa', 'Dnipro', 'Lviv'];
+        var MAJOR_CITIES = (window.RU_MAJOR_CITIES || [])
+            .concat(CONTEXT_CITIES)
+            .slice()
+            .sort(function(a, b) {
+                var priorityA = PRIORITY_CITY_NAMES.indexOf(a.en);
+                var priorityB = PRIORITY_CITY_NAMES.indexOf(b.en);
+                if (priorityA === -1) priorityA = Number.MAX_SAFE_INTEGER;
+                if (priorityB === -1) priorityB = Number.MAX_SAFE_INTEGER;
+                if (priorityA !== priorityB) return priorityA - priorityB;
+                if (a.rank !== b.rank) return a.rank - b.rank;
+                return a.en.localeCompare(b.en);
+            });
+
+        function currentZoomSteps() {
+            var zoom = map.getZoom();
+            return Math.floor(((zoom - HOME_ZOOM) / 0.5) + 0.001);
+        }
+
+        function visibleCityRankLimitForZoom() {
+            var zoomSteps = currentZoomSteps();
+            if (zoomSteps >= 12) return 5;
+            if (zoomSteps >= 9) return 3;
+            if (zoomSteps >= 3) return 1;
+            return 0;
+        }
+
+        function updateCityLabels(isUk, force) {
+            var visibleRank = visibleCityRankLimitForZoom();
+            if (!force && visibleRank === currentCityLabelRank) return;
+
+            cityMarkers.forEach(function(marker) { map.removeLayer(marker); });
+            cityMarkers = [];
+            currentCityLabelRank = visibleRank;
+
+            if (visibleRank === 0) return;
+
+            cityMarkers = MAJOR_CITIES.filter(function(city) {
+                return (city.rank || 99) <= visibleRank;
+            }).map(function(city) {
+                var marker = L.circleMarker([city.lat, city.lng], {
+                    radius: 3,
+                    color: '#93c5fd',
+                    fillColor: '#dbeafe',
+                    fillOpacity: 1,
+                    weight: 1,
+                    interactive: false,
+                    renderer: dataRenderer
+                }).addTo(map);
+                marker.bindTooltip(isUk ? city.uk : city.en, {
+                    permanent: true,
+                    direction: 'right',
+                    offset: [6, 0],
+                    className: 'city-label',
+                    interactive: false
+                });
+                return marker;
+            });
+        }
+        updateCityLabels(true, true);
+
+        function zoomIn() { map.zoomIn(); }
+        function zoomOut() { map.zoomOut(); }
+        function resetView() { map.setView(HOME_CENTER, HOME_ZOOM); }
+
+        // Number cards on the regional layers appear only once the user has
+        // zoomed in three "+" steps from the minimum (3 + 3 * 0.5 = 4.5);
+        // below that the labels overlap and only the colours are readable.
+        var METRIC_LABEL_MIN_ZOOM = map.getMinZoom() + 3 * (map.options.zoomDelta || 1);
+
+        function updateMetricLabelVisibility() {
+            var container = map.getContainer();
+            if (map.getZoom() + 0.001 >= METRIC_LABEL_MIN_ZOOM) {
+                container.classList.remove('hide-metric-labels');
+            } else {
+                container.classList.add('hide-metric-labels');
+            }
+        }
+        map.on('zoomend', updateMetricLabelVisibility);
+        updateMetricLabelVisibility();
+
+        function clearMap() {
+            for (var id in eventMarkers) {
+                eventMarkers[id].layers.forEach(function(layer) { map.removeLayer(layer); });
+            }
+            for (var id in regionPolygons) {
+                map.removeLayer(regionPolygons[id]);
+            }
+            for (var id in maritimeCircles) {
+                map.removeLayer(maritimeCircles[id]);
+            }
+            for (var aggregateId in aggregateRegionPolygons) {
+                map.removeLayer(aggregateRegionPolygons[aggregateId]);
+            }
+            for (var labelId in aggregateRegionLabels) {
+                map.removeLayer(aggregateRegionLabels[labelId]);
+            }
+            eventMarkers = {};
+            regionPolygons = {};
+            maritimeCircles = {};
+            aggregateRegionPolygons = {};
+            aggregateRegionLabels = {};
+        }
+
+        function clearEventMarkers() {
+            for (var id in eventMarkers) {
+                eventMarkers[id].layers.forEach(function(layer) { map.removeLayer(layer); });
+            }
+            eventMarkers = {};
+        }
+
+        function selectRegion(regionId) {
+            if (window.AndroidBridge) {
+                window.AndroidBridge.onRegionClick(regionId);
+            }
+        }
+
+        function selectEvent(eventId) {
+            if (window.AndroidBridge) {
+                window.AndroidBridge.onEventClick(eventId);
+            }
+        }
+
+        function selectMaritimeArea(areaId) {
+            if (window.AndroidBridge) {
+                window.AndroidBridge.onMaritimeAreaClick(areaId);
+            }
+        }
+
+        // Same ramp as the budget layer: yellow (few attacks) -> dark red
+        // (most attacked). Kept on a log scale because counts are heavily
+        // skewed (1..200+), so linear scaling would wash out the low end.
+        function attackTotalColor(count, minCount, maxCount) {
+            if (maxCount <= minCount) return 'hsl(48, 85%, 55%)';
+            var safeMin = Math.max(1, minCount);
+            var ratio = (Math.log(Math.max(1, count)) - Math.log(safeMin)) /
+                        (Math.log(Math.max(safeMin + 1, maxCount)) - Math.log(safeMin));
+            ratio = Math.max(0, Math.min(1, ratio));
+            var hue = Math.round(48 - ratio * 48);
+            var lightness = Math.round(55 - ratio * 26);
+            return 'hsl(' + hue + ', 85%, ' + lightness + '%)';
+        }
+
+        function selectAggregateRegion(regionId) {
+            suppressMapClick = true;
+            if (window.AndroidBridge && window.AndroidBridge.onAggregateRegionClick) {
+                window.AndroidBridge.onAggregateRegionClick(regionId);
+            }
+        }
+
+        function drawAttackTotals(regions, isUk) {
+            if (!regions || regions.length === 0) return;
+            var counts = regions.map(function(region) { return region.attackCount; });
+            var minCount = Math.min.apply(null, counts);
+            var maxCount = Math.max.apply(null, counts);
+
+            regions.forEach(function(region) {
+                // A region with no recorded attacks gets neither colour nor card.
+                if (!region.attackCount) return;
+
+                var color = attackTotalColor(region.attackCount, minCount, maxCount);
+                var admin1 = ADMIN1_BY_ISO[region.iso];
+                var layer;
+                var isSelected = false;
+                if (admin1) {
+                    layer = L.polygon(toLatLngs(admin1.polygons), {
+                        color: color,
+                        fillColor: color,
+                        fillOpacity: 0.50,
+                        weight: 1.7,
+                        renderer: dataRenderer
+                    }).addTo(map);
+                } else {
+                    layer = L.circle([region.lat, region.lng], {
+                        color: color,
+                        fillColor: color,
+                        fillOpacity: 0.50,
+                        radius: 100000,
+                        weight: 1.7,
+                        renderer: dataRenderer
+                    }).addTo(map);
+                }
+
+                var name = isUk ? region.regionNameUk : region.regionNameEn;
+                layer.bindTooltip(name + ': ' + region.attackCount, {
+                    direction: 'center'
+                });
+                layer.on('click', function() { selectAggregateRegion(region.regionId); });
+                aggregateRegionPolygons[region.regionId] = layer;
+
+                var label = L.marker([region.lat, region.lng], {
+                    icon: L.divIcon({
+                        className: 'attack-total-label',
+                        html: String(region.attackCount),
+                        iconSize: null,
+                        iconAnchor: [18, 12]
+                    }),
+                    keyboard: false,
+                    zIndexOffset: 1000
+                }).addTo(map);
+                label.bindTooltip(name, { direction: 'top' });
+                label.on('click', function() { selectAggregateRegion(region.regionId); });
+                aggregateRegionLabels[region.regionId] = label;
+            });
+        }
+
+        // A region counts as "nothing to report" when its metric is 0 (fuel
+        // severity) or 0.0% (budget deficit). Such regions get no number label,
+        // and in budget mode no colour at all.
+        function isZeroMetric(value) {
+            return !value || Math.abs(value) < 0.05;
+        }
+
+        function regionalMetricColor(mode, value, maxValue) {
+            if (mode === 'fuel') {
+                return ['#334155', '#84cc16', '#facc15', '#fb923c', '#ef4444'][Math.max(0, Math.min(4, Math.round(value)))];
+            }
+            // Budget deficit: yellow (mild) -> dark red (severe). Zero-deficit
+            // regions are skipped by the caller and never reach this scale.
+            var ratio = Math.max(0, Math.min(1, value / Math.max(1, maxValue)));
+            var hue = Math.round(48 - ratio * 48);
+            var lightness = Math.round(55 - ratio * 26);
+            return 'hsl(' + hue + ', 85%, ' + lightness + '%)';
+        }
+
+        function drawRegionalIndicators(regions, mode, isUk) {
+            if (!regions || regions.length === 0) return;
+            var maxValue = Math.max.apply(null, regions.map(function(region) {
+                return mode === 'fuel' ? region.severity : region.deficitPercentRevenue;
+            }));
+            regions.forEach(function(region) {
+                var value = mode === 'fuel' ? region.severity : region.deficitPercentRevenue;
+                var isZero = isZeroMetric(value);
+                // Budget mode: a region with no deficit gets no colour at all.
+                if (mode === 'budget' && isZero) return;
+
+                var color = regionalMetricColor(mode, value, maxValue);
+                var admin1 = ADMIN1_BY_ISO[region.iso];
+                var layer = admin1
+                    ? L.polygon(toLatLngs(admin1.polygons), { color: color, fillColor: color, fillOpacity: 0.52, weight: 1.7, renderer: dataRenderer }).addTo(map)
+                    : L.circle([region.lat, region.lng], { color: color, fillColor: color, fillOpacity: 0.52, radius: 180000, weight: 1.7, renderer: dataRenderer }).addTo(map);
+                var name = isUk ? region.regionNameUk : region.regionNameEn;
+                var metric = mode === 'fuel' ? String(value) : value.toFixed(1) + '%';
+                layer.bindTooltip(name + ': ' + metric, { direction: 'center' });
+                layer.on('click', function() { selectAggregateRegion(region.regionId); });
+                aggregateRegionPolygons[region.regionId] = layer;
+
+                // No number card for regions with nothing to report.
+                if (isZero) return;
+
+                var label = L.marker([region.lat, region.lng], {
+                    icon: L.divIcon({ className: 'regional-metric-label', html: metric, iconSize: null, iconAnchor: [18, 12] }),
+                    keyboard: false,
+                    zIndexOffset: 1000
+                }).addTo(map);
+                label.bindTooltip(name, { direction: 'top' });
+                label.on('click', function() { selectAggregateRegion(region.regionId); });
+                aggregateRegionLabels[region.regionId] = label;
+            });
+        }
+
+        var pendingMapEvents = [];
+
+        function beginMapEvents() {
+            pendingMapEvents = [];
+        }
+
+        function appendMapEvents(eventsJson) {
+            pendingMapEvents = pendingMapEvents.concat(JSON.parse(eventsJson));
+        }
+
+        function finishMapData(regionsJson, maritimeJson, selectedEventId, selectedRegionId, selectedMaritimeId, isUk, showAttackTotals, attackTotalsJson, regionalLayer, fuelRestrictionsJson, budgetStressJson) {
+            renderMapData(pendingMapEvents, regionsJson, maritimeJson, selectedEventId, selectedRegionId, selectedMaritimeId, isUk, showAttackTotals, attackTotalsJson, regionalLayer, fuelRestrictionsJson, budgetStressJson);
+            pendingMapEvents = [];
+        }
+
+        function eventColor(event) {
+            if (event.category === "ENERGY_EXPORT_DISRUPTION") return "#ef4444";
+            if (event.category === "SHADOW_FLEET_DISRUPTION") return "#f97316";
+            if (event.category === "SHADOW_FLEET_SANCTIONS") return "#f59e0b";
+            if (event.category === "MARITIME_REGIONAL_SECURITY") return "#0ea5e9";
+            return "#ef4444";
+        }
+
+        function markerRadius(event, isSelected) {
+            var repeatGrowth = Math.min(8, Math.log(Math.max(1, event.hitCount)) / Math.LN2 * 1.8);
+            var base = event.isSbsShadowFleetItem ? 3 : 5;
+            return base + repeatGrowth + (isSelected ? 2 : 0);
+        }
+
+        function markerIconSize(event, radius, isSelected) {
+            var minimum = event.isSbsShadowFleetItem ? 14 : 18;
+            var maximum = event.isSbsShadowFleetItem ? 22 : 36;
+            var size = Math.round(radius * (event.isSbsShadowFleetItem ? 3.2 : 3.4));
+            return Math.max(minimum, Math.min(maximum, size + (isSelected ? 3 : 0)));
+        }
+
+        function nearbyEventSets(events, thresholdPixels) {
+            var sets = [];
+            events.slice().sort(function(a, b) { return a.id.localeCompare(b.id); }).forEach(function(event) {
+                var point = map.latLngToLayerPoint([event.lat, event.lng]);
+                var target = null;
+                var bestDistance = Infinity;
+                sets.forEach(function(set) {
+                    var distance = point.distanceTo(set.center);
+                    if (distance <= thresholdPixels && distance < bestDistance) {
+                        target = set;
+                        bestDistance = distance;
+                    }
+                });
+                if (!target) {
+                    sets.push({ events: [event], points: [point], center: point });
+                    return;
+                }
+                target.events.push(event);
+                target.points.push(point);
+                var count = target.points.length;
+                target.center = L.point(
+                    target.points.reduce(function(sum, item) { return sum + item.x; }, 0) / count,
+                    target.points.reduce(function(sum, item) { return sum + item.y; }, 0) / count
+                );
+            });
+
+            var merged = true;
+            while (merged) {
+                merged = false;
+                for (var left = 0; left < sets.length && !merged; left++) {
+                    for (var right = left + 1; right < sets.length; right++) {
+                        if (sets[left].center.distanceTo(sets[right].center) > thresholdPixels) continue;
+                        sets[left].events = sets[left].events.concat(sets[right].events);
+                        sets[left].points = sets[left].points.concat(sets[right].points);
+                        var mergedCount = sets[left].points.length;
+                        sets[left].center = L.point(
+                            sets[left].points.reduce(function(sum, item) { return sum + item.x; }, 0) / mergedCount,
+                            sets[left].points.reduce(function(sum, item) { return sum + item.y; }, 0) / mergedCount
+                        );
+                        sets.splice(right, 1);
+                        merged = true;
+                        break;
+                    }
+                }
+            }
+            return sets;
+        }
+
+        function spiderfyDisplayPoints(events) {
+            var points = {};
+            nearbyEventSets(events, 20).forEach(function(set) {
+                if (set.events.length === 1) {
+                    set.events.forEach(function(event) { points[event.id] = [event.lat, event.lng]; });
+                    return;
+                }
+
+                var eventIndex = 0;
+                var ring = 0;
+                while (eventIndex < set.events.length) {
+                    var radius = 38 + ring * 38;
+                    var capacity = Math.max(6, Math.floor(2 * Math.PI * radius / 36));
+                    var ringCount = Math.min(capacity, set.events.length - eventIndex);
+                    for (var offset = 0; offset < ringCount; offset++) {
+                        var angle = -Math.PI / 2 + offset * 2 * Math.PI / ringCount + ring * 0.31;
+                        var displayPoint = L.point(
+                            set.center.x + Math.cos(angle) * radius,
+                            set.center.y + Math.sin(angle) * radius
+                        );
+                        var displayLatLng = map.layerPointToLatLng(displayPoint);
+                        points[set.events[eventIndex].id] = [displayLatLng.lat, displayLatLng.lng];
+                        eventIndex++;
+                    }
+                    ring++;
+                }
+            });
+            return points;
+        }
+
+        function drawGroupMarker(event, displayPoint) {
+            var isSelected = event.id === currentSelectedEventGroupId;
+            var color = eventColor(event);
+            var radius = markerRadius(event, isSelected);
+            var iconSize = markerIconSize(event, radius, isSelected);
+            var hitTarget = L.circleMarker(displayPoint, {
+                radius: Math.max(15, iconSize / 2 + 6),
+                stroke: false,
+                fillColor: color,
+                fillOpacity: 0.001,
+                renderer: dataRenderer
+            }).addTo(map);
+            var visual = L.marker(displayPoint, {
+                interactive: false,
+                keyboard: false,
+                icon: L.divIcon({
+                    className: "event-fire-wrapper",
+                    html: '<div class="event-fire-icon"><img class="event-fire-marker' + (isSelected ? ' selected' : '') + '" src="fire_marker.png" alt="">' +
+                        (event.hitCount > 1 ? '<span class="event-fire-count">' + event.hitCount + '</span>' : '') +
+                        '</div>',
+                    iconSize: [iconSize, iconSize],
+                    iconAnchor: [iconSize / 2, iconSize / 2]
+                })
+            }).addTo(map);
+            var layers = [hitTarget, visual];
+
+            hitTarget.bindTooltip((currentIsUk ? event.titleUk : event.titleEn) + (event.hitCount > 1 ? " · " + event.hitCount : ""), { permanent: false });
+            hitTarget.on("click", function() {
+                suppressMapClick = true;
+                selectEvent(event.id);
+            });
+            eventMarkers[event.id] = { layers: layers };
+        }
+
+        function drawClusterMarker(cluster, index) {
+            var totalHits = cluster.events.reduce(function(sum, event) { return sum + event.hitCount; }, 0);
+            var size = Math.min(54, 32 + Math.round(Math.log(totalHits + 1) / Math.LN2 * 2.2));
+            var center = map.layerPointToLatLng(cluster.center);
+            var marker = L.marker(center, {
+                keyboard: false,
+                icon: L.divIcon({
+                    className: "event-cluster-wrapper",
+                    html: '<div class="event-fire-icon"><img class="event-fire-marker" src="fire_marker.png" alt=""><span class="event-fire-count">' + totalHits + '</span></div>',
+                    iconSize: [size, size],
+                    iconAnchor: [size / 2, size / 2]
+                })
+            }).addTo(map);
+            var tooltip = currentIsUk
+                ? totalHits + " уражень · " + cluster.events.length + " об'єктів"
+                : totalHits + " strikes · " + cluster.events.length + " objects";
+            marker.bindTooltip(tooltip, { permanent: false });
+            marker.on("click", function() {
+                suppressMapClick = true;
+                map.setView(center, Math.min(map.getMaxZoom(), map.getZoom() + 1.5));
+            });
+            eventMarkers["cluster_" + index] = { layers: [marker] };
+        }
+
+        function drawEventMarkers() {
+            clearEventMarkers();
+            var visibleEvents = currentMapEvents.filter(function(event) { return !event.isMapAggregateOnly; });
+            if (currentZoomSteps() < 9) {
+                nearbyEventSets(visibleEvents, 58).forEach(function(cluster, index) {
+                    if (cluster.events.length === 1) {
+                        var event = cluster.events[0];
+                        drawGroupMarker(event, [event.lat, event.lng]);
+                    } else {
+                        drawClusterMarker(cluster, index);
+                    }
+                });
+                return;
+            }
+
+            var displayPoints = spiderfyDisplayPoints(visibleEvents);
+            visibleEvents.forEach(function(event) {
+                drawGroupMarker(event, displayPoints[event.id] || [event.lat, event.lng]);
+            });
+        }
+
+        function renderMapData(evs, regionsJson, maritimeJson, selectedEventId, selectedRegionId, selectedMaritimeId, isUk, showAttackTotals, attackTotalsJson, regionalLayer, fuelRestrictionsJson, budgetStressJson) {
+            clearMap();
+            updateCityLabels(isUk, true);
+
+            if (showAttackTotals) {
+                currentMapEvents = [];
+                drawAttackTotals(JSON.parse(attackTotalsJson), isUk);
+                return;
+            }
+
+            if (regionalLayer === 'FUEL_RESTRICTIONS') {
+                currentMapEvents = [];
+                drawRegionalIndicators(JSON.parse(fuelRestrictionsJson), 'fuel', isUk);
+                return;
+            }
+            if (regionalLayer === 'BUDGET_STRESS') {
+                currentMapEvents = [];
+                drawRegionalIndicators(JSON.parse(budgetStressJson), 'budget', isUk);
+                return;
+            }
+
+            var regions = JSON.parse(regionsJson);
+            regions.forEach(function(region) {
+                var color = "#10b981";
+                if (region.fuelStressStatus === "HIGH" || region.fiscalStressStatus === "HIGH") {
+                    color = "#ef4444";
+                } else if (region.fuelStressStatus === "MEDIUM" || region.fiscalStressStatus === "MEDIUM") {
+                    color = "#f59e0b";
+                }
+
+                var admin1 = ADMIN1_BY_ISO[REGION_ISO[region.regionId]];
+                var isSelected = region.regionId === selectedRegionId;
+                var layer;
+
+                if (admin1) {
+                    layer = L.polygon(toLatLngs(admin1.polygons), {
+                        color: color,
+                        fillColor: color,
+                        fillOpacity: isSelected ? 0.5 : 0.25,
+                        weight: isSelected ? 3 : 1.5,
+                        renderer: dataRenderer
+                    }).addTo(map);
+                } else {
+                    layer = L.circle([region.lat, region.lng], {
+                        color: color,
+                        fillColor: color,
+                        fillOpacity: isSelected ? 0.5 : 0.25,
+                        radius: region.defaultRadiusKm * 1000,
+                        weight: isSelected ? 3 : 1.5,
+                        renderer: dataRenderer
+                    }).addTo(map);
+                }
+
+                layer.bindTooltip(isUk ? region.nameUk : region.nameEn, { permanent: false, direction: 'center' });
+
+                layer.on('click', function() {
+                    selectRegion(region.regionId);
+                });
+
+                regionPolygons[region.regionId] = layer;
+            });
+
+            currentMapEvents = evs;
+            currentSelectedEventGroupId = selectedEventId;
+            currentIsUk = isUk;
+            drawEventMarkers();
+        }
+
+        map.on('zoomend', function() {
+            updateCityLabels(currentIsUk, false);
+            if (currentMapEvents.length > 0) drawEventMarkers();
+        });
+    </script>
+</body>
+</html>
