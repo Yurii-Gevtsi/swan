@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "weekOf": "2026-07-13",
+  "entries": [
+    {
+      "category": "INFRASTRUCTURE_DISRUPTION",
+      "objectNameUk": "НПЗ у Рязанській області",
+      "objectNameEn": "Ryazan Oblast oil refinery",
+      "date": "2026-07-15",
+      "locationLabelUk": "Рязанська область (узагальнено)",
+      "locationLabelEn": "Ryazan Oblast (generalized)",
+      "lat": 54.6,
+      "lng": 39.7,
+      "radiusKm": 60,
+      "regionId": null,
+      "theater": "RUSSIA_INTERNAL",
+      "severity": "HIGH",
+      "verificationStatus": "MEDIA_REPORTED_WITH_OFFICIAL_REFERENCE",
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "summaryUk": "За повідомленнями, у ніч на 15 липня уражено установку первинної переробки нафти. Локація узагальнена до рівня області.",
+      "summaryEn": "Reports indicate a primary distillation unit was hit overnight on 15 July. Location generalized to oblast level.",
+      "impactTags": "Refinery, Ryazan, Fuel Production",
+      "source": {
+        "url": "https://example.com/news/ryazan-refinery-strike",
+        "name": "Example Media report, 15 July 2026",
+        "publisher": "Example Media",
+        "type": "MEDIA_REPORT",
+        "language": "uk",
+        "reliabilityScore": 4
+      }
+    },
+    {
+      "category": "флот",
+      "objectNameUk": "Танкер тіньового флоту в Чорному морі",
+      "date": "2026-07-16",
+      "lat": 43.8,
+      "lng": 33.5,
+      "source": {
+        "url": "https://example.com/news/tanker-hit",
+        "publisher": "Example Media"
+      }
+    }
+  ]
+}

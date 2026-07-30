@@ -3,6 +3,8 @@ package com.gysignalstudio.blackswan.ui.screens
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import android.widget.Toast
+import com.gysignalstudio.blackswan.ui.viewmodel.SyncState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -39,9 +41,26 @@ fun ProfileScreen(
     val language by viewModel.selectedLanguage.collectAsState()
     val themeSelection by viewModel.themeSelection.collectAsState()
     val adsDisabled by viewModel.adsDisabled.collectAsState()
+    val syncState by viewModel.syncState.collectAsState()
 
     val context = LocalContext.current
     val isUk = language == "uk"
+
+    LaunchedEffect(syncState) {
+        when (val state = syncState) {
+            is SyncState.Success -> Toast.makeText(
+                context,
+                if (isUk) "Синхронізовано, дані оновлено" else "Synced, data updated",
+                Toast.LENGTH_SHORT
+            ).show()
+            is SyncState.Error -> Toast.makeText(
+                context,
+                (if (isUk) "Помилка синхронізації: " else "Sync failed: ") + state.message,
+                Toast.LENGTH_LONG
+            ).show()
+            else -> Unit
+        }
+    }
 
     // Dialog sheets states
     var showAbout by remember { mutableStateOf(false) }
@@ -311,17 +330,23 @@ fun ProfileScreen(
             )
 
             Button(
-                onClick = {
-                    viewModel.clearCacheAndReset()
-                    // Prompt feedback
-                },
+                onClick = { viewModel.clearCacheAndReset() },
+                enabled = syncState != SyncState.Syncing,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(48.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
                 shape = RoundedCornerShape(8.dp)
             ) {
-                Icon(imageVector = Icons.Default.Cached, contentDescription = "Clear Cache", tint = MaterialTheme.colorScheme.onSurface)
+                if (syncState == SyncState.Syncing) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(20.dp),
+                        strokeWidth = 2.dp,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                } else {
+                    Icon(imageVector = Icons.Default.Cached, contentDescription = "Clear Cache", tint = MaterialTheme.colorScheme.onSurface)
+                }
                 Spacer(modifier = Modifier.width(10.dp))
                 Text(text = if (isUk) "ОЧИСТИТИ КЕШ ТА СИНХРОНІЗУВАТИ" else "CLEAR CACHE & SYNC", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSurface)
             }

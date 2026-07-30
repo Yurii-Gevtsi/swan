@@ -51,6 +51,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
@@ -110,6 +111,8 @@ private val lossTotals = listOf(
 @Composable
 fun TotalScreen(viewModel: OsintViewModel) {
     val language by viewModel.selectedLanguage.collectAsState()
+    val themeSelection by viewModel.themeSelection.collectAsState()
+    val isDarkTheme = themeSelection != "light"
     val isUk = language == "uk"
     val uriHandler = LocalUriHandler.current
     val context = LocalContext.current
@@ -173,6 +176,7 @@ fun TotalScreen(viewModel: OsintViewModel) {
                 )
                 TotalTab.SPECIAL_OPERATIONS -> SpecialOperationsContent(
                     isUk = isUk,
+                    isDarkTheme = isDarkTheme,
                     snapshot = specialOperationsSnapshot,
                     uriHandler = uriHandler,
                 )
@@ -265,6 +269,7 @@ private fun TotalLossesContent(
 @Composable
 private fun SpecialOperationsContent(
     isUk: Boolean,
+    isDarkTheme: Boolean,
     snapshot: SpecialOperationsSnapshot?,
     uriHandler: androidx.compose.ui.platform.UriHandler,
 ) {
@@ -291,6 +296,7 @@ private fun SpecialOperationsContent(
                 SpecialOperationCard(
                     operation = operation,
                     isUk = isUk,
+                    isDarkTheme = isDarkTheme,
                     uriHandler = uriHandler,
                 )
             }
@@ -352,9 +358,10 @@ private fun LossTotalCard(
 private fun SpecialOperationCard(
     operation: SpecialOperationEntry,
     isUk: Boolean,
+    isDarkTheme: Boolean,
     uriHandler: androidx.compose.ui.platform.UriHandler,
 ) {
-    val visual = operationVisual(operation.id)
+    val visual = operationVisual(operation.id, isDarkTheme)
     val details = if (isUk) operation.detailsUk else operation.detailsEn
 
     Card(
@@ -379,6 +386,7 @@ private fun SpecialOperationCard(
                         Image(
                             painter = painterResource(visual.iconRes),
                             contentDescription = null,
+                            colorFilter = if (!isDarkTheme) ColorFilter.tint(visual.accent) else null,
                             modifier = Modifier.size(28.dp),
                         )
                     } else {
@@ -494,7 +502,20 @@ private fun OperationSection(
     }
 }
 
-private fun operationVisual(id: String): OperationVisual {
+// The per-operation colors below were designed against the app's dark chip
+// backgrounds and don't read well on the light theme's white cards, so light
+// theme overrides them to a single red accent (the light theme's own primary
+// red) on a matching light-red container instead of the dark-only palette.
+private val LightThemeAccent = Color(0xFF991B1B)
+private val LightThemeChipBackground = Color(0xFFFEE2E2)
+
+private fun operationVisual(id: String, isDarkTheme: Boolean): OperationVisual {
+    val visual = baseOperationVisual(id)
+    if (isDarkTheme) return visual
+    return visual.copy(accent = LightThemeAccent, chipBackground = LightThemeChipBackground)
+}
+
+private fun baseOperationVisual(id: String): OperationVisual {
     return when (id) {
         "operation_molochka" -> OperationVisual(
             accent = Color(0xFFF97316),

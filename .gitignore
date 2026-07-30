@@ -38,3 +38,40 @@ tmp/
 
 # Personal IDE device list
 /.idea/deviceManager.xml
+
+# --- Data pipeline: regenerated output, not source ---
+# finalize-data.ps1 rewrites these in full on every weekly run (3x/week);
+# committing them would bloat history with large diffs. The accumulated
+# seed/source files they are built from (osint_events_manual_additions.json,
+# wiki_uav_strikes_*_snapshot.json, wikipedia_citation_sources.json,
+# special_events_2022_2025.json, impact_registry_manual_additions.json) ARE
+# tracked, since those represent real, non-regenerable curation work.
+/data/final/osint_events.json
+/data/final/map_event_groups.json
+/data/final/impact_registry.json
+/data/final/region_attack_totals_2026.json
+/data/final/fuel_facilities_registry.md
+/data/final/*_report.txt
+/data/final/duplicate_groups.txt
+/data/final/impact_registry_duplicates.txt
+/data/final/osint_events_skipped.txt
+
+# Archive of raw weekly report inputs already merged into
+# osint_events_manual_additions.json - provenance log, not the dataset itself.
+/data/weekly/processed/
+
+# Published copies of the generated data (app bundle + Firebase Hosting
+# mirror), rebuilt by tools/publish-weekly.ps1 from data/final/ each run.
+/app/src/main/assets/osint_events.json
+/app/src/main/assets/map_event_groups.json
+/app/src/main/assets/region_attack_totals_2026.json
+/app/src/main/assets/fuel_shortage_regions_2026.json
+/app/src/main/assets/regional_budget_stress_2026.json
+/app/src/main/assets/special_events_2022_2025.json
+/app/src/main/assets/wikipedia_citation_sources.json
+/site/data/
+
+# Translation caches: speed up re-runs, regenerable at the cost of re-paying
+# for translation, not source data.
+/tools/regional-report-translation-cache.json
+/tools/translation-cache-uk-en.json

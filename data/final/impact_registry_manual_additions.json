@@ -1,0 +1,363 @@
+{
+  "schemaVersion": 1,
+  "source": "Manual additions from Wikipedia and Slovo i Dilo ship-loss lists",
+  "generatedAt": "2026-07-15T00:00:00Z",
+  "items": [
+    {
+      "objectName": "Fast boat near Zmiinyi Island #1",
+      "strikeLocation": "near Zmiinyi Island",
+      "strikeDate": "2022-02-25",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "sourceUrls": [
+        "https://uk.wikipedia.org/wiki/Список_втрат_кораблів_під_час_російсько-української_війни#ВМС_Росії_3"
+      ],
+      "sourceNote": "Wikipedia row has no separate reference in the Additional information column; using the article as fallback."
+    },
+    {
+      "objectName": "Fast boat near Zmiinyi Island #2",
+      "strikeLocation": "near Zmiinyi Island",
+      "strikeDate": "2022-02-25",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "sourceUrls": [
+        "https://uk.wikipedia.org/wiki/Список_втрат_кораблів_під_час_російсько-української_війни#ВМС_Росії_3"
+      ],
+      "sourceNote": "Wikipedia row has no separate reference in the Additional information column; using the article as fallback."
+    },
+    {
+      "objectName": "Landing craft near Kobleve",
+      "strikeLocation": "near Kobleve, Ukraine",
+      "strikeDate": "2022-02-25",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "sourceUrls": [
+        "https://uk.wikipedia.org/wiki/Список_втрат_кораблів_під_час_російсько-української_війни#ВМС_Росії_3"
+      ],
+      "sourceNote": "Wikipedia row has no separate reference in the Additional information column; using the article as fallback."
+    },
+    {
+      "objectName": "Veliky Ustyug",
+      "strikeLocation": "Black Sea",
+      "strikeDate": "2022-03-07",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "sourceUrls": [
+        "https://uk.wikipedia.org/wiki/Список_втрат_кораблів_під_час_російсько-української_війни#ВМС_Росії_3"
+      ],
+      "sourceNote": "Wikipedia row has no separate reference in the Additional information column; using the article as fallback."
+    },
+    {
+      "objectName": "P-436 Raptor",
+      "strikeLocation": "Azov Sea, Mariupol waters",
+      "strikeDate": "2022-03-21",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "sourceUrls": [
+        "https://defence-ua.com/army_and_war/polk_azov_vluchnim_postrilom_primusiv_rosijan_vidmovitis_vid_desantu_pid_mariupolem-6570.html",
+        "https://mil.in.ua/uk/news/rosiyany-pidtverdzhuyut-poshkodzhennya-katera-raptor-bilya-mariupolya/"
+      ],
+      "sourceNote": "Sources from the Wikipedia Additional information references."
+    },
+    {
+      "objectName": "Landing craft in Odesa Oblast #1",
+      "strikeLocation": "Odesa Oblast, Ukraine",
+      "strikeDate": "2022-03-25",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "sourceUrls": [
+        "https://uk.wikipedia.org/wiki/Список_втрат_кораблів_під_час_російсько-української_війни#ВМС_Росії_3"
+      ],
+      "sourceNote": "Wikipedia row has no separate reference in the Additional information column; using the article as fallback."
+    },
+    {
+      "objectName": "Landing craft in Odesa Oblast #2",
+      "strikeLocation": "Odesa Oblast, Ukraine",
+      "strikeDate": "2022-03-25",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "sourceUrls": [
+        "https://uk.wikipedia.org/wiki/Список_втрат_кораблів_під_час_російсько-української_війни#ВМС_Росії_3"
+      ],
+      "sourceNote": "Wikipedia row has no separate reference in the Additional information column; using the article as fallback."
+    },
+    {
+      "objectName": "Admiral Essen",
+      "strikeLocation": "Sevastopol naval base",
+      "strikeDate": "2022-04-04",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "Rasul Gamzatov",
+      "strikeLocation": "Volga-Don Canal, Russia",
+      "strikeDate": "2022-04-22",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "P-342 Yunarmiyets Baltyki",
+      "strikeLocation": "near Zmiinyi Island",
+      "strikeDate": "2022-05-02",
+      "category": "NAVAL_VESSEL_LOSS"
+    },
+    {
+      "objectName": "D-310 BK-16",
+      "strikeLocation": "near Zmiinyi Island",
+      "strikeDate": "2022-05-02",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "D-144 Serna",
+      "strikeLocation": "near Zmiinyi Island",
+      "strikeDate": "2022-05-05",
+      "category": "NAVAL_VESSEL_LOSS"
+    },
+    {
+      "objectName": "P-275",
+      "strikeLocation": "near Zmiinyi Island",
+      "strikeDate": "2022-05-07",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "P-281 Maksim Panin",
+      "strikeLocation": "near Zmiinyi Island",
+      "strikeDate": "2022-05-07",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "P-342 Oleg Shipitsyn",
+      "strikeLocation": "near Zmiinyi Island",
+      "strikeDate": "2022-05-08",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "D-106 Akula",
+      "strikeLocation": "Azov Sea, Mariupol waters",
+      "strikeDate": "2022-06-30",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "Landing craft in the Dnipro-Buh estuary #1",
+      "strikeLocation": "Dnipro-Buh estuary, Ukraine",
+      "strikeDate": "2022-06-01",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "sourceUrls": [
+        "https://uk.wikipedia.org/wiki/Список_втрат_кораблів_під_час_російсько-української_війни#ВМС_Росії_3"
+      ],
+      "sourceNote": "Wikipedia row has no separate reference in the Additional information column; using the article as fallback."
+    },
+    {
+      "objectName": "Landing craft in the Dnipro-Buh estuary #2",
+      "strikeLocation": "Dnipro-Buh estuary, Ukraine",
+      "strikeDate": "2022-06-01",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "sourceUrls": [
+        "https://uk.wikipedia.org/wiki/Список_втрат_кораблів_під_час_російсько-української_війни#ВМС_Росії_3"
+      ],
+      "sourceNote": "Wikipedia row has no separate reference in the Additional information column; using the article as fallback."
+    },
+    {
+      "objectName": "Landing craft near Zmiinyi Island",
+      "strikeLocation": "near Zmiinyi Island",
+      "strikeDate": "2022-06-30",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "sourceUrls": [
+        "https://uk.wikipedia.org/wiki/Список_втрат_кораблів_під_час_російсько-української_війни#ВМС_Росії_3"
+      ],
+      "sourceNote": "Wikipedia row has no separate reference in the Additional information column; using the article as fallback."
+    },
+    {
+      "objectName": "Unidentified warship",
+      "strikeLocation": "Sevastopol naval base",
+      "strikeDate": "2022-10-29",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "sourceUrls": [
+        "https://mil.in.ua/uk/news/ukrayinski-syly-pokazaly-ataku-na-korabli-rf-morskymy-bpa/"
+      ],
+      "sourceNote": "Source from the Wikipedia Additional information references."
+    },
+    {
+      "objectName": "Ivan Khurs",
+      "strikeLocation": "Black Sea, 140 km northeast of the Bosporus",
+      "strikeDate": "2023-05-24",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "P-349 Suvorovets",
+      "strikeLocation": "Novorossiysk naval base",
+      "strikeDate": "2023-08-04",
+      "category": "NAVAL_VESSEL_LOSS"
+    },
+    {
+      "objectName": "SIG",
+      "strikeLocation": "Kerch Strait",
+      "strikeDate": "2023-08-04",
+      "category": "MARITIME_ASSET_DISRUPTION"
+    },
+    {
+      "objectName": "Project KS-701 Tunets boat #1",
+      "strikeLocation": "northwestern Black Sea",
+      "strikeDate": "2023-09-03",
+      "category": "NAVAL_VESSEL_LOSS"
+    },
+    {
+      "objectName": "Project KS-701 Tunets boat #2",
+      "strikeLocation": "northwestern Black Sea",
+      "strikeDate": "2023-09-13",
+      "category": "NAVAL_VESSEL_LOSS"
+    },
+    {
+      "objectName": "Samum",
+      "strikeLocation": "Sevastopol naval base",
+      "strikeDate": "2023-09-14",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "Sergey Kotov",
+      "strikeLocation": "southwestern Black Sea",
+      "strikeDate": "2023-09-14",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "sourceUrls": [
+        "https://focus.ua/uk/voennye-novosti/593405-u-chornomu-mori-pidbito-korabel-vmf-rf-sergej-kotov-u-gur-rozkrili-podrobici",
+        "https://news.yahoo.com/two-russian-patrol-ships-damaged-193900840.html"
+      ],
+      "sourceNote": "Sources from the Wikipedia Additional information references."
+    },
+    {
+      "objectName": "Professor Nikolay Muru",
+      "strikeLocation": "Sevastopol roadstead",
+      "strikeDate": "2023-10-12",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "Vladimir Kozytskiy",
+      "strikeLocation": "Sevastopol roadstead",
+      "strikeDate": "2023-10-26",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "Kostyantyn Olshansky",
+      "strikeLocation": "Sevastopol Bay",
+      "strikeDate": "2024-03-23",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "Serpukhov",
+      "strikeLocation": "Baltiysk, Kaliningrad Oblast",
+      "strikeDate": "2024-04-07",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "Mangust",
+      "strikeLocation": "Vuzka Bay, Crimea",
+      "strikeDate": "2024-05-06",
+      "category": "NAVAL_VESSEL_LOSS"
+    },
+    {
+      "objectName": "Project KS-701 Tunets boat #3",
+      "strikeLocation": "Crimea, Kerch Bridge area",
+      "strikeDate": "2024-05-30",
+      "category": "NAVAL_VESSEL_LOSS"
+    },
+    {
+      "objectName": "Project KS-701 Tunets boat #4",
+      "strikeLocation": "Crimea, Kerch Bridge area",
+      "strikeDate": "2024-05-30",
+      "category": "NAVAL_VESSEL_LOSS"
+    },
+    {
+      "objectName": "Saturn",
+      "strikeLocation": "Panske Lake, Crimea",
+      "strikeDate": "2024-06-06",
+      "category": "NAVAL_VESSEL_LOSS"
+    },
+    {
+      "objectName": "Rostov-on-Don",
+      "strikeLocation": "Sevastopol port",
+      "strikeDate": "2024-08-02",
+      "category": "NAVAL_VESSEL_LOSS",
+      "sourceUrls": [
+        "https://defence-ua.com/news/genshtab_povidomiv_pro_neochikuvani_rezultati_ataki_vnochi_2_serpnja_i_jdetsja_pro_pidvodnij_choven_rashistiv-16205.html"
+      ],
+      "sourceNote": "Source from the Wikipedia Additional information references."
+    },
+    {
+      "objectName": "Grad",
+      "strikeLocation": "Onega Lake, Karelia",
+      "strikeDate": "2025-10-04",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "Rasul Gamzatov (Project 22460 Okhotnik)",
+      "strikeLocation": "Caspian Sea",
+      "strikeDate": "2025-12-19",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "BK-16 transport-landing craft",
+      "strikeLocation": "Crimea",
+      "strikeDate": "2026-02-12",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "Two Project Okhotnik patrol ships",
+      "strikeLocation": "Inkerman area, Crimea",
+      "strikeDate": "2026-02-21",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "Slavyanin",
+      "strikeLocation": "Kerch ferry crossing",
+      "strikeDate": "2026-03-14",
+      "category": "MARITIME_ASSET_DISRUPTION"
+    },
+    {
+      "objectName": "Avangard",
+      "strikeLocation": "Kerch ferry crossing",
+      "strikeDate": "2026-03-14",
+      "category": "MARITIME_ASSET_DISRUPTION"
+    },
+    {
+      "objectName": "Purga",
+      "strikeLocation": "Black Sea",
+      "strikeDate": "2026-03-25",
+      "category": "MARITIME_ASSET_DISRUPTION"
+    },
+    {
+      "objectName": "Yamal",
+      "strikeLocation": "occupied Crimea",
+      "strikeDate": "2026-04-18",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "Azov",
+      "strikeLocation": "occupied Crimea",
+      "strikeDate": "2026-04-18",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "Karakurt",
+      "strikeLocation": "Primorsk port, Russia",
+      "strikeDate": "2026-05-03",
+      "category": "NAVAL_VESSEL_DAMAGE"
+    },
+    {
+      "objectName": "Admiral Essen",
+      "strikeLocation": "Novorossiysk naval base",
+      "strikeDate": "2026-03-02",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "sourceUrls": [
+        "https://ukranews.com/ua/news/1138175-pislya-prylotiv-ukrayinskyh-bpla-po-rosijskomu-admiral-essen-fregat-ne-mozhe-puskaty-kalibry"
+      ],
+      "sourceNote": "Source from the Wikipedia Additional information references."
+    },
+    {
+      "objectName": "Project 12411M missile boat",
+      "strikeLocation": "Novorossiysk naval base",
+      "strikeDate": "2026-03-02",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "sourceUrls": [
+        "https://militarnyi.com/en/news/ukraine-struck-admiral-essen-boat-molniya/"
+      ],
+      "sourceNote": "Source from the Wikipedia Additional information references."
+    },
+    {
+      "objectName": "Izumrud",
+      "strikeLocation": "Novorossiysk naval base",
+      "strikeDate": "2026-07-14",
+      "category": "NAVAL_VESSEL_LOSS"
+    }
+  ]
+}

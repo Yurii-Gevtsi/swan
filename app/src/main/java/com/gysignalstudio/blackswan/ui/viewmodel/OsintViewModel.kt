@@ -201,8 +201,15 @@ class OsintViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun clearCacheAndReset() {
+        _syncState.value = SyncState.Syncing
         viewModelScope.launch {
             repository.clearCache()
+            val result = repository.syncDailySnapshot()
+            _syncState.value = if (result.isSuccess) {
+                SyncState.Success(result.getOrDefault(""))
+            } else {
+                SyncState.Error(result.exceptionOrNull()?.message ?: "Unknown error")
+            }
         }
     }
 

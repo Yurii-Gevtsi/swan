@@ -1,0 +1,1486 @@
+{
+  "datasetId": "baseline_naval_losses_black_azov_v0_1",
+  "status": "DRAFT",
+  "generatedAt": "2026-07-09T00:00:00Z",
+  "coveragePeriod": {
+    "start": "2022-02-24",
+    "end": "2026-07-09"
+  },
+  "scope": {
+    "domain": "NAVAL_AND_MARITIME_ASSET_DISRUPTIONS",
+    "included": [
+      "Russian naval vessels",
+      "Russian landing ships and landing craft",
+      "Russian auxiliary / support vessels connected to military logistics",
+      "Port-based vessel strikes represented only as generalized maritime-area records"
+    ],
+    "excluded": [
+      "Exact coordinates",
+      "Live operational details",
+      "Graphic details",
+      "Land-based Ukrainian or occupied-territory event pins"
+    ]
+  },
+  "sourceRegistry": [
+    {
+      "id": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
+      "name": "Ministry of Defence of Ukraine — Fleet losses in the Black and Azov Seas",
+      "sourceType": "OFFICIAL_UA_STATE",
+      "country": "UA",
+      "language": "uk",
+      "accessType": "WEB_PAGE",
+      "url": "https://mod.gov.ua/news/flot-shcho-yde-na-dno-naibilshi-vtraty-rosii-u-chornomu-ta-azovskomu-moriakh-za-chas-viiny",
+      "coverageStart": "2022-03-25",
+      "coverageEnd": "2026-03-02",
+      "priority": "HIGH",
+      "allowedUse": "SUMMARY_AND_LINK_ONLY",
+      "reliabilityScore": 5,
+      "requiresManualReview": true
+    },
+    {
+      "id": "source_nv_ua_russian_ships_sunk_list_2024_02_14",
+      "name": "NV — Russian ships sunk or damaged by Ukraine",
+      "sourceType": "REPUTABLE_UA_MEDIA",
+      "country": "UA",
+      "language": "uk",
+      "accessType": "WEB_PAGE",
+      "url": "https://nv.ua/ukr/ukraine/events/bdk-cezar-kunikov-minsk-novocherkask-saratov-kater-ivanovec-usi-korabli-zatopleni-ukrajinoyu-50366629.html",
+      "coverageStart": "2022-03-25",
+      "coverageEnd": "2024-02-14",
+      "priority": "MEDIUM",
+      "allowedUse": "SUMMARY_AND_LINK_ONLY",
+      "reliabilityScore": 4,
+      "requiresManualReview": true
+    }
+  ],
+  "maritimeAreaRegistry": [
+    {
+      "id": "black_sea_general",
+      "name": {
+        "en": "Black Sea",
+        "uk": "Чорне море"
+      },
+      "precision": "MARITIME_REGIONAL"
+    },
+    {
+      "id": "azov_sea_general",
+      "name": {
+        "en": "Azov Sea",
+        "uk": "Азовське море"
+      },
+      "precision": "MARITIME_REGIONAL"
+    },
+    {
+      "id": "ukrainian_coastal_waters_black_sea_general",
+      "name": {
+        "en": "Ukrainian coastal waters, Black Sea",
+        "uk": "Акваторія України, Чорне море"
+      },
+      "precision": "MARITIME_REGIONAL"
+    },
+    {
+      "id": "ukrainian_coastal_waters_azov_sea_general",
+      "name": {
+        "en": "Ukrainian coastal waters, Azov Sea",
+        "uk": "Акваторія України, Азовське море"
+      },
+      "precision": "MARITIME_REGIONAL"
+    },
+    {
+      "id": "novorossiysk_maritime_area",
+      "name": {
+        "en": "Novorossiysk maritime area",
+        "uk": "Морський район Новоросійська"
+      },
+      "precision": "MARITIME_REGIONAL"
+    },
+    {
+      "id": "kerch_strait_maritime_area",
+      "name": {
+        "en": "Kerch Strait maritime area",
+        "uk": "Морський район Керченської протоки"
+      },
+      "precision": "MARITIME_REGIONAL"
+    }
+  ],
+  "events": [
+    {
+      "id": "event_20220325_naval_saratov_loss_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian landing ship Saratov destroyed in the Azov Sea area",
+        "uk": "Російський ВДК «Саратов» знищено в районі Азовського моря"
+      },
+      "date": "2022-03-24",
+      "datePrecision": "DAY",
+      "category": "NAVAL_VESSEL_LOSS",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "AZOV_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_azov_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_saratov",
+        "assetName": "Saratov",
+        "assetType": "LANDING_SHIP",
+        "assetClass": "Project 1171 Tapir / Alligator-class",
+        "assetRole": "AMPHIBIOUS_LOGISTICS"
+      },
+      "outcome": "DESTROYED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "ВДК «Саратов» був знищений під час ураження російських десантних кораблів у районі Азовського моря. Подія стала першою великою втратою російського флоту після початку повномасштабного вторгнення."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17",
+        "source_nv_ua_russian_ships_sunk_list_2024_02_14"
+      ],
+      "impactTags": [
+        "landing_ship",
+        "azov_sea",
+        "naval_loss",
+        "military_logistics"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized maritime-area record. No city-level pin and no exact coordinates."
+    },
+    {
+      "id": "event_20220325_naval_novocherkassk_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian landing ship Novocherkassk damaged in the Azov Sea area",
+        "uk": "Російський ВДК «Новочеркаськ» уражено в районі Азовського моря"
+      },
+      "date": "2022-03-24",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "AZOV_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_azov_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_novocherkassk",
+        "assetName": "Novocherkassk",
+        "assetType": "LANDING_SHIP",
+        "assetClass": "Project 775 Ropucha-class",
+        "assetRole": "AMPHIBIOUS_LOGISTICS"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summary": {
+        "uk": "ВДК «Новочеркаськ» отримав пошкодження під час того самого епізоду, в якому було знищено «Саратов»."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17",
+        "source_nv_ua_russian_ships_sunk_list_2024_02_14"
+      ],
+      "impactTags": [
+        "landing_ship",
+        "azov_sea",
+        "naval_damage"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized maritime-area record."
+    },
+    {
+      "id": "event_20220325_naval_caesar_kunikov_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian landing ship Caesar Kunikov damaged in the Azov Sea area",
+        "uk": "Російський ВДК «Цезар Куніков» уражено в районі Азовського моря"
+      },
+      "date": "2022-03-24",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "AZOV_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_azov_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_caesar_kunikov",
+        "assetName": "Caesar Kunikov",
+        "assetType": "LANDING_SHIP",
+        "assetClass": "Project 775 Ropucha-class",
+        "assetRole": "AMPHIBIOUS_LOGISTICS"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summary": {
+        "uk": "ВДК «Цезар Куніков» отримав пошкодження під час епізоду з ураженням російських десантних кораблів у районі Азовського моря."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17",
+        "source_nv_ua_russian_ships_sunk_list_2024_02_14"
+      ],
+      "impactTags": [
+        "landing_ship",
+        "azov_sea",
+        "naval_damage"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized maritime-area record."
+    },
+    {
+      "id": "event_20220413_naval_moskva_loss_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian cruiser Moskva sank in the Black Sea",
+        "uk": "Російський крейсер «Москва» затонув у Чорному морі"
+      },
+      "date": "2022-04-13",
+      "outcomeDate": "2022-04-14",
+      "category": "NAVAL_VESSEL_LOSS",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_moskva",
+        "assetName": "Moskva",
+        "assetType": "GUIDED_MISSILE_CRUISER",
+        "assetClass": "Project 1164 Slava-class",
+        "assetRole": "BLACK_SEA_FLEET_FLAGSHIP"
+      },
+      "outcome": "SUNK",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "Флагман Чорноморського флоту РФ «Москва» був уражений у Чорному морі та наступного дня затонув під час буксирування."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17",
+        "source_nv_ua_russian_ships_sunk_list_2024_02_14"
+      ],
+      "impactTags": [
+        "black_sea_fleet",
+        "flagship",
+        "naval_loss",
+        "air_defense_capacity"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized Black Sea record. No exact coordinates."
+    },
+    {
+      "id": "event_20220507_naval_serna_loss_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian Serna-class landing craft destroyed in the Black Sea",
+        "uk": "Російський десантний катер проєкту «Серна» знищено в Чорному морі"
+      },
+      "date": "2022-05-07",
+      "category": "NAVAL_VESSEL_LOSS",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_serna_20220507",
+        "assetName": "Serna-class landing craft",
+        "assetType": "LANDING_CRAFT",
+        "assetClass": "Project 11770 Serna",
+        "assetRole": "AMPHIBIOUS_LOGISTICS"
+      },
+      "outcome": "DESTROYED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summary": {
+        "uk": "Російський десантний катер проєкту «Серна» був знищений у Чорному морі під час серії уражень малих десантних одиниць."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17",
+        "source_nv_ua_russian_ships_sunk_list_2024_02_14"
+      ],
+      "impactTags": [
+        "landing_craft",
+        "black_sea",
+        "naval_loss"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized maritime-area record."
+    },
+    {
+      "id": "event_20220507_naval_raptor_group_loss_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Two Russian Raptor-class assault boats destroyed in the Black Sea",
+        "uk": "Два російські катери «Раптор» знищено в Чорному морі"
+      },
+      "date": "2022-05-07",
+      "category": "NAVAL_VESSEL_LOSS",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_raptor_group_20220507",
+        "assetName": "Two Raptor-class assault boats",
+        "assetType": "ASSAULT_BOAT_GROUP",
+        "assetClass": "Project 03160 Raptor",
+        "assetRole": "PATROL_AND_LANDING_SUPPORT",
+        "quantity": 2
+      },
+      "outcome": "DESTROYED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summary": {
+        "uk": "Два швидкісні десантно-штурмові катери «Раптор» були знищені під час епізоду в Чорному морі."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "assault_boats",
+        "black_sea",
+        "naval_loss"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Grouped vessel record. No exact coordinates."
+    },
+    {
+      "id": "event_20220512_maritime_vsevolod_bobrov_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian support vessel Vsevolod Bobrov damaged in the Black Sea",
+        "uk": "Російське судно забезпечення «Всєволод Бобров» уражено в Чорному морі"
+      },
+      "date": "2022-05-12",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MILITARY_LOGISTICS",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_vsevolod_bobrov",
+        "assetName": "Vsevolod Bobrov",
+        "assetType": "SUPPORT_VESSEL",
+        "assetClass": "Project 23120",
+        "assetRole": "MILITARY_LOGISTICS_SUPPORT"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summary": {
+        "uk": "Судно тилового забезпечення «Всєволод Бобров» було уражене в Чорному морі та виведене з ладу на тривалий період."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17",
+        "source_nv_ua_russian_ships_sunk_list_2024_02_14"
+      ],
+      "impactTags": [
+        "support_vessel",
+        "military_logistics",
+        "black_sea"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized maritime-area record."
+    },
+    {
+      "id": "event_20220617_maritime_vasily_bekh_loss_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian tug Spasatel Vasily Bekh destroyed in the Black Sea",
+        "uk": "Російський буксир «Спасатєль Васілій Бех» знищено в Чорному морі"
+      },
+      "date": "2022-06-17",
+      "category": "NAVAL_VESSEL_LOSS",
+      "eventScope": "MILITARY_LOGISTICS",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_spasatel_vasily_bekh",
+        "assetName": "Spasatel Vasily Bekh",
+        "assetType": "RESCUE_TUG",
+        "assetClass": "Project 22870",
+        "assetRole": "LOGISTICS_AND_SUPPORT"
+      },
+      "outcome": "DESTROYED_OR_SUNK",
+      "verificationStatus": "MEDIA_REPORTED_WITH_OFFICIAL_REFERENCE",
+      "severity": "MEDIUM",
+      "summary": {
+        "uk": "Буксир «Спасатєль Васілій Бех» був уражений у Чорному морі під час виконання логістичної ролі."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17",
+        "source_nv_ua_russian_ships_sunk_list_2024_02_14"
+      ],
+      "impactTags": [
+        "rescue_tug",
+        "support_vessel",
+        "black_sea",
+        "military_logistics"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized maritime-area record."
+    },
+    {
+      "id": "event_20221029_naval_admiral_makarov_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian frigate Admiral Makarov damaged in the Black Sea Fleet basing area",
+        "uk": "Російський фрегат «Адмірал Макаров» уражено в районі базування ЧФ"
+      },
+      "date": "2022-10-29",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_admiral_makarov",
+        "assetName": "Admiral Makarov",
+        "assetType": "FRIGATE",
+        "assetClass": "Project 11356R Admiral Grigorovich-class",
+        "assetRole": "MISSILE_PLATFORM"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "Фрегат «Адмірал Макаров» отримав пошкодження під час ураження кораблів Чорноморського флоту в районі базування."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "frigate",
+        "black_sea_fleet",
+        "missile_platform",
+        "naval_damage"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Port/basing-area event generalized to maritime area."
+    },
+    {
+      "id": "event_20221029_naval_ivan_golubets_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian minesweeper Ivan Golubets damaged in the Black Sea Fleet basing area",
+        "uk": "Російський тральщик «Іван Голубєц» уражено в районі базування ЧФ"
+      },
+      "date": "2022-10-29",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_ivan_golubets",
+        "assetName": "Ivan Golubets",
+        "assetType": "MINESWEEPER",
+        "assetClass": "Project 266M Natya-class",
+        "assetRole": "MINE_COUNTERMEASURES"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summary": {
+        "uk": "Морський тральщик «Іван Голубєц» був уражений під час епізоду в районі базування Чорноморського флоту."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "minesweeper",
+        "naval_damage",
+        "black_sea_fleet"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Port/basing-area event generalized to maritime area."
+    },
+    {
+      "id": "event_20230804_naval_olenegorsky_gornyak_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian landing ship Olenegorsky Gornyak damaged near Novorossiysk",
+        "uk": "Російський ВДК «Олєнєгорскій горняк» уражено в морському районі Новоросійська"
+      },
+      "date": "2023-08-04",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "novorossiysk_maritime_area",
+      "asset": {
+        "assetId": "asset_ru_navy_olenegorsky_gornyak",
+        "assetName": "Olenegorsky Gornyak",
+        "assetType": "LANDING_SHIP",
+        "assetClass": "Project 775 Ropucha-class",
+        "assetRole": "AMPHIBIOUS_LOGISTICS"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "ВДК «Олєнєгорскій горняк» був уражений у морському районі Новоросійська, що ускладнило використання великих десантних кораблів РФ для перевезення військових вантажів."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17",
+        "source_nv_ua_russian_ships_sunk_list_2024_02_14"
+      ],
+      "impactTags": [
+        "landing_ship",
+        "novorossiysk",
+        "military_logistics",
+        "naval_damage"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized Novorossiysk maritime-area record."
+    },
+    {
+      "id": "event_20230913_naval_rostov_on_don_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian submarine Rostov-on-Don damaged in the Black Sea Fleet basing area",
+        "uk": "Російський підводний човен «Ростов-на-Дону» уражено в районі базування ЧФ"
+      },
+      "date": "2023-09-13",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_rostov_on_don",
+        "assetName": "Rostov-on-Don",
+        "assetType": "SUBMARINE",
+        "assetClass": "Project 636.3 Kilo-class / Varshavyanka",
+        "assetRole": "MISSILE_PLATFORM"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "MEDIA_REPORTED_WITH_OFFICIAL_REFERENCE",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "Підводний човен «Ростов-на-Дону», носій ракет «Калібр», був уражений у районі базування Чорноморського флоту."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17",
+        "source_nv_ua_russian_ships_sunk_list_2024_02_14"
+      ],
+      "impactTags": [
+        "submarine",
+        "kalibr_platform",
+        "black_sea_fleet",
+        "naval_damage"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Basing-area event generalized to maritime area."
+    },
+    {
+      "id": "event_20230913_naval_minsk_loss_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian landing ship Minsk critically damaged in the Black Sea Fleet basing area",
+        "uk": "Російський ВДК «Мінськ» критично уражено в районі базування ЧФ"
+      },
+      "date": "2023-09-13",
+      "category": "NAVAL_VESSEL_LOSS",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_minsk",
+        "assetName": "Minsk",
+        "assetType": "LANDING_SHIP",
+        "assetClass": "Project 775 Ropucha-class",
+        "assetRole": "AMPHIBIOUS_LOGISTICS"
+      },
+      "outcome": "DESTROYED_OR_ECONOMIC_LOSS",
+      "verificationStatus": "MEDIA_REPORTED_WITH_OFFICIAL_REFERENCE",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "ВДК «Мінськ» отримав критичні пошкодження, які у джерелах описуються як такі, що роблять відновлення економічно недоцільним."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17",
+        "source_nv_ua_russian_ships_sunk_list_2024_02_14"
+      ],
+      "impactTags": [
+        "landing_ship",
+        "naval_loss",
+        "black_sea_fleet"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Basing-area event generalized to maritime area."
+    },
+    {
+      "id": "event_20231011_naval_pavel_derzhavin_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian patrol ship Pavel Derzhavin damaged in the Black Sea",
+        "uk": "Російський патрульний корабель «Павєл Дєржавін» уражено в Чорному морі"
+      },
+      "date": "2023-10-11",
+      "dateEnd": "2023-10-13",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_pavel_derzhavin",
+        "assetName": "Pavel Derzhavin",
+        "assetType": "PATROL_SHIP",
+        "assetClass": "Project 22160",
+        "assetRole": "PATROL_AND_SECURITY"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summary": {
+        "uk": "Патрульний корабель «Павєл Дєржавін» був уражений у Чорному морі та, за описом МОУ, зазнав повторного ураження протягом кількох днів."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "patrol_ship",
+        "black_sea_fleet",
+        "naval_damage"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized maritime-area record."
+    },
+    {
+      "id": "event_20231013_naval_buyan_m_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian Buyan-M missile ship damaged in the Black Sea",
+        "uk": "Російський малий ракетний корабель «Буян-М» уражено в Чорному морі"
+      },
+      "date": "2023-10-13",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_buyan_m_20231013",
+        "assetName": "Buyan-M missile ship",
+        "assetType": "SMALL_MISSILE_SHIP",
+        "assetClass": "Project 21631 Buyan-M",
+        "assetRole": "MISSILE_PLATFORM"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "Малий ракетний корабель проєкту «Буян-М» був уражений у Чорному морі, що зменшило кількість доступних платформ для запуску крилатих ракет."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "missile_ship",
+        "kalibr_platform",
+        "naval_damage"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized maritime-area record."
+    },
+    {
+      "id": "event_20231104_naval_askold_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian missile corvette Askold damaged before entering service",
+        "uk": "Російський ракетний корвет «Аскольд» уражено до введення в стрій"
+      },
+      "date": "2023-11-04",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_askold",
+        "assetName": "Askold",
+        "assetType": "MISSILE_CORVETTE",
+        "assetClass": "Project 22800 Karakurt",
+        "assetRole": "MISSILE_PLATFORM"
+      },
+      "outcome": "DAMAGED_NON_OPERATIONAL",
+      "verificationStatus": "MEDIA_REPORTED_WITH_OFFICIAL_REFERENCE",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "Новий ракетний корвет «Аскольд» був уражений до офіційного введення в склад флоту, що порушило програму поповнення ЧФ РФ ракетними кораблями."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17",
+        "source_nv_ua_russian_ships_sunk_list_2024_02_14"
+      ],
+      "impactTags": [
+        "missile_corvette",
+        "karakurt",
+        "kalibr_platform",
+        "naval_damage"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Shipyard/port event generalized to maritime area."
+    },
+    {
+      "id": "event_20231110_naval_serna_loss_002",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian Serna-class landing craft destroyed in the Black Sea Fleet coastal area",
+        "uk": "Російський десантний катер «Серна» знищено в прибережній акваторії ЧФ"
+      },
+      "date": "2023-11-10",
+      "category": "NAVAL_VESSEL_LOSS",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_serna_20231110",
+        "assetName": "Serna-class landing craft",
+        "assetType": "LANDING_CRAFT",
+        "assetClass": "Project 11770 Serna",
+        "assetRole": "AMPHIBIOUS_LOGISTICS"
+      },
+      "outcome": "DESTROYED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summary": {
+        "uk": "Ще один десантний катер проєкту «Серна» був знищений у прибережній акваторії, пов’язаній із базуванням Чорноморського флоту."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "landing_craft",
+        "black_sea",
+        "naval_loss"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Coastal event generalized to maritime area."
+    },
+    {
+      "id": "event_20231110_naval_akula_loss_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian Akula-class landing craft destroyed in the Black Sea Fleet coastal area",
+        "uk": "Російський десантний катер «Акула» знищено в прибережній акваторії ЧФ"
+      },
+      "date": "2023-11-10",
+      "category": "NAVAL_VESSEL_LOSS",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_akula_20231110",
+        "assetName": "Akula-class landing craft",
+        "assetType": "LANDING_CRAFT",
+        "assetClass": "Project 1176 Akula",
+        "assetRole": "AMPHIBIOUS_LOGISTICS"
+      },
+      "outcome": "DESTROYED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summary": {
+        "uk": "Десантний катер проєкту «Акула» був знищений разом із іншим малим десантним катером у прибережній акваторії ЧФ."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "landing_craft",
+        "black_sea",
+        "naval_loss"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Coastal event generalized to maritime area."
+    },
+    {
+      "id": "event_20231226_naval_novocherkassk_loss_002",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian landing ship Novocherkassk destroyed in the Black Sea Fleet coastal area",
+        "uk": "Російський ВДК «Новочеркаськ» знищено в прибережній акваторії ЧФ"
+      },
+      "date": "2023-12-26",
+      "category": "NAVAL_VESSEL_LOSS",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_novocherkassk",
+        "assetName": "Novocherkassk",
+        "assetType": "LANDING_SHIP",
+        "assetClass": "Project 775 Ropucha-class",
+        "assetRole": "AMPHIBIOUS_LOGISTICS"
+      },
+      "outcome": "DESTROYED_OR_SUNK",
+      "verificationStatus": "MEDIA_REPORTED_WITH_OFFICIAL_REFERENCE",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "ВДК «Новочеркаськ» був знищений у прибережній акваторії Чорного моря після попереднього пошкодження у 2022 році."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17",
+        "source_nv_ua_russian_ships_sunk_list_2024_02_14"
+      ],
+      "impactTags": [
+        "landing_ship",
+        "naval_loss",
+        "black_sea_fleet",
+        "military_logistics"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Port event generalized to maritime area."
+    },
+    {
+      "id": "event_20240131_naval_ivanovets_loss_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian missile boat Ivanovets destroyed in the Black Sea",
+        "uk": "Російський ракетний катер «Івановєц» знищено в Чорному морі"
+      },
+      "date": "2024-01-31",
+      "category": "NAVAL_VESSEL_LOSS",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_ivanovets",
+        "assetName": "Ivanovets",
+        "assetType": "MISSILE_BOAT",
+        "assetClass": "Project 12411 Molniya / Tarantul-class",
+        "assetRole": "ANTI_SHIP_MISSILE_PLATFORM"
+      },
+      "outcome": "SUNK",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "Ракетний катер «Івановєц» був знищений у Чорному морі, що скоротило кількість російських катерів цього класу в ЧФ."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "missile_boat",
+        "naval_loss",
+        "black_sea_fleet"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized maritime-area record."
+    },
+    {
+      "id": "event_20240214_naval_caesar_kunikov_loss_002",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian landing ship Caesar Kunikov sunk in the Black Sea",
+        "uk": "Російський ВДК «Цезар Куніков» затонув у Чорному морі"
+      },
+      "date": "2024-02-14",
+      "category": "NAVAL_VESSEL_LOSS",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_caesar_kunikov",
+        "assetName": "Caesar Kunikov",
+        "assetType": "LANDING_SHIP",
+        "assetClass": "Project 775 Ropucha-class",
+        "assetRole": "AMPHIBIOUS_LOGISTICS"
+      },
+      "outcome": "SUNK",
+      "verificationStatus": "MEDIA_REPORTED_WITH_OFFICIAL_REFERENCE",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "ВДК «Цезар Куніков» був знищений у Чорному морі після попереднього пошкодження у 2022 році."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17",
+        "source_nv_ua_russian_ships_sunk_list_2024_02_14"
+      ],
+      "impactTags": [
+        "landing_ship",
+        "naval_loss",
+        "black_sea_fleet",
+        "military_logistics"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized maritime-area record."
+    },
+    {
+      "id": "event_20240305_naval_sergey_kotov_loss_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian patrol ship Sergey Kotov sunk in the Black Sea",
+        "uk": "Російський патрульний корабель «Сєргєй Котов» затонув у Чорному морі"
+      },
+      "date": "2024-03-05",
+      "category": "NAVAL_VESSEL_LOSS",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_sergey_kotov",
+        "assetName": "Sergey Kotov",
+        "assetType": "PATROL_SHIP",
+        "assetClass": "Project 22160",
+        "assetRole": "PATROL_AND_SECURITY"
+      },
+      "outcome": "SUNK",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "Патрульний корабель «Сєргєй Котов» був знищений у Чорному морі, що стало однією з найбільших втрат сучасних патрульних кораблів ЧФ РФ."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "patrol_ship",
+        "naval_loss",
+        "black_sea_fleet"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized maritime-area record."
+    },
+    {
+      "id": "event_20240324_naval_yamal_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian landing ship Yamal damaged in the Black Sea Fleet basing area",
+        "uk": "Російський ВДК «Ямал» уражено в районі базування ЧФ"
+      },
+      "date": "2024-03-23",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_yamal",
+        "assetName": "Yamal",
+        "assetType": "LANDING_SHIP",
+        "assetClass": "Project 775 Ropucha-class",
+        "assetRole": "AMPHIBIOUS_LOGISTICS"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "ВДК «Ямал» був уражений під час епізоду, в якому також постраждали інші кораблі ЧФ РФ."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "landing_ship",
+        "naval_damage",
+        "black_sea_fleet"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Basing-area event generalized to maritime area."
+    },
+    {
+      "id": "event_20240324_naval_azov_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian landing ship Azov damaged in the Black Sea Fleet basing area",
+        "uk": "Російський ВДК «Азов» уражено в районі базування ЧФ"
+      },
+      "date": "2024-03-23",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_azov",
+        "assetName": "Azov",
+        "assetType": "LANDING_SHIP",
+        "assetClass": "Project 775 Ropucha-class",
+        "assetRole": "AMPHIBIOUS_LOGISTICS"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "ВДК «Азов» був уражений у районі базування Чорноморського флоту."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "landing_ship",
+        "naval_damage",
+        "black_sea_fleet"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Basing-area event generalized to maritime area."
+    },
+    {
+      "id": "event_20240324_maritime_ivan_khurs_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian intelligence ship Ivan Khurs damaged in the Black Sea Fleet basing area",
+        "uk": "Російський розвідувальний корабель «Іван Хурс» уражено в районі базування ЧФ"
+      },
+      "date": "2024-03-23",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_ivan_khurs",
+        "assetName": "Ivan Khurs",
+        "assetType": "INTELLIGENCE_SHIP",
+        "assetClass": "Project 18280",
+        "assetRole": "INTELLIGENCE_AND_COMMAND_SUPPORT"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "Середній розвідувальний корабель «Іван Хурс» отримав пошкодження під час ураження об’єктів ЧФ РФ у районі базування."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "intelligence_ship",
+        "naval_damage",
+        "black_sea_fleet"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Basing-area event generalized to maritime area."
+    },
+    {
+      "id": "event_20240421_maritime_kommuna_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian rescue ship Kommuna damaged in the Black Sea Fleet basing area",
+        "uk": "Російське рятувальне судно «Коммуна» уражено в районі базування ЧФ"
+      },
+      "date": "2024-04-21",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_kommuna",
+        "assetName": "Kommuna",
+        "assetType": "RESCUE_SHIP",
+        "assetClass": "Submarine salvage vessel",
+        "assetRole": "SUBMARINE_RESCUE_AND_SALVAGE"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summary": {
+        "uk": "Рятувальне судно «Коммуна» було уражене, що послабило можливості ЧФ РФ із підводних рятувальних і підйомних робіт."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "rescue_ship",
+        "salvage_capacity",
+        "naval_damage"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Basing-area event generalized to maritime area."
+    },
+    {
+      "id": "event_20240519_naval_kovrovets_loss_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian minesweeper Kovrovets destroyed in the Black Sea Fleet basing area",
+        "uk": "Російський тральщик «Ковровєц» знищено в районі базування ЧФ"
+      },
+      "date": "2024-05-19",
+      "category": "NAVAL_VESSEL_LOSS",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_kovrovets",
+        "assetName": "Kovrovets",
+        "assetType": "MINESWEEPER",
+        "assetClass": "Project 266M Natya-class",
+        "assetRole": "MINE_COUNTERMEASURES"
+      },
+      "outcome": "DESTROYED_OR_FULLY_DISABLED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "Тральщик «Ковровєц» був знищений або повністю виведений з ладу, що послабило протимінні спроможності ЧФ РФ."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "minesweeper",
+        "mine_countermeasures",
+        "naval_loss"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Basing-area event generalized to maritime area."
+    },
+    {
+      "id": "event_20240519_naval_tsiklon_loss_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian missile ship Tsiklon destroyed in the Black Sea Fleet basing area",
+        "uk": "Російський ракетний корабель «Циклон» знищено в районі базування ЧФ"
+      },
+      "date": "2024-05-19",
+      "category": "NAVAL_VESSEL_LOSS",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_tsiklon",
+        "assetName": "Tsiklon",
+        "assetType": "SMALL_MISSILE_SHIP",
+        "assetClass": "Project 22800 Karakurt",
+        "assetRole": "MISSILE_PLATFORM"
+      },
+      "outcome": "SUNK",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "Малий ракетний корабель «Циклон» був знищений у районі базування ЧФ РФ."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "missile_ship",
+        "kalibr_platform",
+        "naval_loss"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Basing-area event generalized to maritime area."
+    },
+    {
+      "id": "event_20240822_maritime_conro_trade_loss_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Rail ferry Conro Trade destroyed in the Kerch Strait maritime area",
+        "uk": "Залізничний пором «Конро Трейд» знищено в районі Керченської протоки"
+      },
+      "date": "2024-08-22",
+      "category": "PORT_LOGISTICS_DISRUPTION",
+      "eventScope": "MILITARY_LOGISTICS",
+      "theater": "KERCH_STRAIT",
+      "maritimeAreaId": "kerch_strait_maritime_area",
+      "asset": {
+        "assetId": "asset_ru_logistics_conro_trade",
+        "assetName": "Conro Trade",
+        "assetType": "RAIL_FERRY",
+        "assetClass": "Rail ferry",
+        "assetRole": "FUEL_AND_MILITARY_LOGISTICS"
+      },
+      "outcome": "SUNK",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "Залізничний пором «Конро Трейд» був знищений у районі Керченської протоки. МОУ описує його як важливий логістичний актив для перевезення палива та вантажів."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "rail_ferry",
+        "kerch_strait",
+        "fuel_logistics",
+        "military_logistics"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized Kerch Strait maritime-area record."
+    },
+    {
+      "id": "event_20250401_naval_bk16_loss_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian BK-16 boat destroyed in the Black Sea coastal area",
+        "uk": "Російський катер БК-16 знищено в прибережній акваторії Чорного моря"
+      },
+      "date": "2025-04-01",
+      "category": "NAVAL_VESSEL_LOSS",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_bk16_20250401",
+        "assetName": "BK-16",
+        "assetType": "PATROL_ASSAULT_BOAT",
+        "assetClass": "Project 02510 BK-16",
+        "assetRole": "PATROL_AND_COASTAL_SECURITY"
+      },
+      "outcome": "DESTROYED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summary": {
+        "uk": "Катер БК-16 був знищений у прибережній акваторії Чорного моря."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "patrol_boat",
+        "naval_loss",
+        "black_sea"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Coastal event generalized to maritime area."
+    },
+    {
+      "id": "event_20250401_naval_raptor_damage_002",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian Raptor-class boat damaged in the Black Sea coastal area",
+        "uk": "Російський катер «Раптор» уражено в прибережній акваторії Чорного моря"
+      },
+      "date": "2025-04-01",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_raptor_20250401",
+        "assetName": "Raptor-class boat",
+        "assetType": "PATROL_ASSAULT_BOAT",
+        "assetClass": "Project 03160 Raptor",
+        "assetRole": "PATROL_AND_LANDING_SUPPORT"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summary": {
+        "uk": "Катер «Раптор» був серйозно пошкоджений під час того самого епізоду, в якому було знищено БК-16."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "patrol_boat",
+        "naval_damage",
+        "black_sea"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Coastal event generalized to maritime area."
+    },
+    {
+      "id": "event_20250828_naval_buyan_m_damage_002",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian Buyan-M missile ship damaged near Novorossiysk",
+        "uk": "Російський малий ракетний корабель «Буян-М» уражено в районі Новоросійська"
+      },
+      "date": "2025-08-28",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "novorossiysk_maritime_area",
+      "asset": {
+        "assetId": "asset_ru_navy_buyan_m_20250828",
+        "assetName": "Buyan-M missile ship",
+        "assetType": "SMALL_MISSILE_SHIP",
+        "assetClass": "Project 21631 Buyan-M",
+        "assetRole": "MISSILE_PLATFORM"
+      },
+      "outcome": "DAMAGED_AND_DISABLED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "Малий ракетний корабель проєкту «Буян-М» був уражений у морському районі Новоросійська та виведений з ладу на невизначений термін."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "missile_ship",
+        "novorossiysk",
+        "kalibr_platform",
+        "naval_damage"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized Novorossiysk maritime-area record."
+    },
+    {
+      "id": "event_20251215_naval_varshavyanka_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian Varshavyanka-class submarine damaged in the Black Sea",
+        "uk": "Російський підводний човен класу «Варшавянка» уражено в Чорному морі"
+      },
+      "date": "2025-12-15",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "ukrainian_coastal_waters_black_sea_general",
+      "asset": {
+        "assetId": "asset_ru_navy_varshavyanka_20251215",
+        "assetName": "Varshavyanka-class submarine",
+        "assetType": "SUBMARINE",
+        "assetClass": "Project 636 / Kilo-class",
+        "assetRole": "MISSILE_PLATFORM"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "Підводний човен класу «Варшавянка» був уражений у Чорному морі. Запис потребує ручної перевірки для уточнення ідентичності конкретного човна."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "submarine",
+        "kalibr_platform",
+        "naval_damage"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized maritime-area record. Specific vessel identity requires manual review."
+    },
+    {
+      "id": "event_20260302_naval_valentin_pikul_loss_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian minesweeper Valentin Pikul lost near Novorossiysk",
+        "uk": "Російський тральщик «Валєнтін Пікуль» втрачено в районі Новоросійська"
+      },
+      "date": "2026-03-02",
+      "category": "NAVAL_VESSEL_LOSS",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "novorossiysk_maritime_area",
+      "asset": {
+        "assetId": "asset_ru_navy_valentin_pikul",
+        "assetName": "Valentin Pikul",
+        "assetType": "MINESWEEPER",
+        "assetClass": "Project 266M Natya-class",
+        "assetRole": "MINE_COUNTERMEASURES"
+      },
+      "outcome": "DESTROYED_OR_LOST",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "Тральщик «Валєнтін Пікуль» був втрачений у морському районі Новоросійська, що послабило протимінні можливості російської бази."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "minesweeper",
+        "novorossiysk",
+        "naval_loss",
+        "mine_countermeasures"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized Novorossiysk maritime-area record."
+    },
+    {
+      "id": "event_20260302_naval_yeysk_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian anti-submarine ship Yeysk damaged near Novorossiysk",
+        "uk": "Російський протичовновий корабель «Єйськ» уражено в районі Новоросійська"
+      },
+      "date": "2026-03-02",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "novorossiysk_maritime_area",
+      "asset": {
+        "assetId": "asset_ru_navy_yeysk",
+        "assetName": "Yeysk",
+        "assetType": "ANTI_SUBMARINE_SHIP",
+        "assetClass": "Unspecified anti-submarine vessel",
+        "assetRole": "ANTI_SUBMARINE_WARFARE"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summary": {
+        "uk": "Протичовновий корабель «Єйськ» був уражений у морському районі Новоросійська."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "anti_submarine_ship",
+        "novorossiysk",
+        "naval_damage"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized Novorossiysk maritime-area record."
+    },
+    {
+      "id": "event_20260302_naval_kasimov_damage_001",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian anti-submarine ship Kasimov damaged near Novorossiysk",
+        "uk": "Російський протичовновий корабель «Касімов» уражено в районі Новоросійська"
+      },
+      "date": "2026-03-02",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "novorossiysk_maritime_area",
+      "asset": {
+        "assetId": "asset_ru_navy_kasimov",
+        "assetName": "Kasimov",
+        "assetType": "ANTI_SUBMARINE_SHIP",
+        "assetClass": "Unspecified anti-submarine vessel",
+        "assetRole": "ANTI_SUBMARINE_WARFARE"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summary": {
+        "uk": "Протичовновий корабель «Касімов» був уражений у морському районі Новоросійська."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "anti_submarine_ship",
+        "novorossiysk",
+        "naval_damage"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized Novorossiysk maritime-area record."
+    },
+    {
+      "id": "event_20260406_naval_admiral_makarov_damage_002",
+      "status": "DRAFT",
+      "title": {
+        "en": "Russian frigate Admiral Makarov damaged again near Novorossiysk",
+        "uk": "Російський фрегат «Адмірал Макаров» повторно уражено в районі Новоросійська"
+      },
+      "date": "2026-04-06",
+      "category": "NAVAL_VESSEL_DAMAGE",
+      "eventScope": "MARITIME_ASSET_DISRUPTION",
+      "theater": "BLACK_SEA",
+      "maritimeAreaId": "novorossiysk_maritime_area",
+      "asset": {
+        "assetId": "asset_ru_navy_admiral_makarov",
+        "assetName": "Admiral Makarov",
+        "assetType": "FRIGATE",
+        "assetClass": "Project 11356R Admiral Grigorovich-class",
+        "assetRole": "MISSILE_PLATFORM"
+      },
+      "outcome": "DAMAGED",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "HIGH",
+      "summary": {
+        "uk": "Фрегат «Адмірал Макаров» був повторно уражений у морському районі Новоросійська."
+      },
+      "sourceIds": [
+        "source_mod_ua_black_azov_fleet_losses_2026_04_17"
+      ],
+      "impactTags": [
+        "frigate",
+        "novorossiysk",
+        "missile_platform",
+        "naval_damage"
+      ],
+      "requiresManualReview": true,
+      "safetyNotes": "Generalized Novorossiysk maritime-area record."
+    }
+  ],
+  "coverageNotes": {
+    "coverageStatus": "HIGH_CONFIDENCE_MAJOR_EVENTS",
+    "eventCount": 35,
+    "limitations": [
+      "This is not a full reconciliation against all official aggregate fleet-loss figures.",
+      "Some events use grouped assets where individual boat names are not available.",
+      "Some vessel names/classes require manual normalization against a maritime asset registry.",
+      "Port and basing-area incidents are intentionally generalized to maritime areas."
+    ],
+    "nextPass": [
+      "Normalize asset names in Ukrainian, English, and Russian transliteration.",
+      "Split grouped Raptor/boat records if reliable per-hull data is found.",
+      "Add secondary confirmation from Reuters, AP, BBC, ISW, Defense Express, Militarnyi, HUR, Navy, and General Staff where available.",
+      "Create separate maritime_asset_registry.json with persistent asset IDs."
+    ]
+  }
+}
