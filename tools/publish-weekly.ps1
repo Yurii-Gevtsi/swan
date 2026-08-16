@@ -27,7 +27,8 @@ $publishedFiles = @(
     'region_attack_totals_2026.json',
     'fuel_shortage_regions_2026.json',
     'regional_budget_stress_2026.json',
-    'wikipedia_citation_sources.json'
+    'wikipedia_citation_sources.json',
+    'loss_totals.json'
 )
 
 # 1. Import the weekly raw input into the manual-additions snapshot.

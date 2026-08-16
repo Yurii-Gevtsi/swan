@@ -349,6 +349,25 @@ data class SpecialOperationsSnapshot(
     val operations: List<SpecialOperationEntry> = emptyList()
 )
 
+@com.squareup.moshi.JsonClass(generateAdapter = true)
+data class LossTotalEntry(
+    val key: String,
+    val labelUk: String,
+    val labelEn: String,
+    val value: Long
+)
+
+@com.squareup.moshi.JsonClass(generateAdapter = true)
+data class LossTotalsSnapshot(
+    val schemaVersion: Int,
+    val generatedAt: String,
+    val asOfDateUk: String,
+    val asOfDateEn: String,
+    val sourceName: String,
+    val sourceUrl: String,
+    val totals: List<LossTotalEntry> = emptyList()
+)
+
 // --- SAMPLE DATA GENERATOR ---
 
 object SampleOsintData {

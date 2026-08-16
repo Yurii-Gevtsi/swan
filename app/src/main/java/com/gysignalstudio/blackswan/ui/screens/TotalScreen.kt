@@ -58,12 +58,14 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gysignalstudio.blackswan.R
 import com.gysignalstudio.blackswan.data.local.AssetDataLoader
 import com.gysignalstudio.blackswan.data.model.SpecialOperationEntry
 import com.gysignalstudio.blackswan.data.model.SpecialOperationsSnapshot
+import com.gysignalstudio.blackswan.data.model.LossTotalsSnapshot
 import com.gysignalstudio.blackswan.ui.viewmodel.OsintViewModel
 import java.text.NumberFormat
 import java.util.Locale
@@ -76,35 +78,38 @@ private enum class TotalTab {
 }
 
 private data class LossTotal(
+    val key: String,
     val en: String,
     val uk: String,
     val value: Long,
     @DrawableRes val iconRes: Int,
 )
 
+@DrawableRes
+private fun lossIconRes(key: String): Int = when (key) {
+    "personnel" -> R.drawable.loss_personnel
+    "tanks" -> R.drawable.loss_tanks
+    "armored_vehicles" -> R.drawable.loss_armored_vehicles
+    "artillery" -> R.drawable.loss_artillery
+    "mlrs" -> R.drawable.loss_mlrs
+    "air_defense" -> R.drawable.loss_air_defense
+    "aircraft" -> R.drawable.loss_aircraft
+    "helicopters" -> R.drawable.loss_helicopters
+    "uav" -> R.drawable.loss_uav
+    "cruise_missiles" -> R.drawable.loss_cruise_missiles
+    "ships" -> R.drawable.loss_ships
+    "submarines" -> R.drawable.loss_submarines
+    "vehicles_fuel_tanks" -> R.drawable.loss_transport
+    "special_equipment" -> R.drawable.loss_special_equipment
+    "ground_robots" -> R.drawable.loss_ground_robots
+    else -> R.drawable.loss_special_equipment
+}
+
 private data class OperationVisual(
     val accent: Color,
     val chipBackground: Color,
     val icon: ImageVector? = null,
     @DrawableRes val iconRes: Int? = null,
-)
-
-private val lossTotals = listOf(
-    LossTotal("Personnel", "Особовий склад", 1_422_970, R.drawable.loss_personnel),
-    LossTotal("Tanks", "Танки", 12_141, R.drawable.loss_tanks),
-    LossTotal("Armored combat vehicles", "Бойові броньовані машини", 24_938, R.drawable.loss_armored_vehicles),
-    LossTotal("Artillery systems", "Артилерійські системи", 45_953, R.drawable.loss_artillery),
-    LossTotal("Multiple-launch rocket systems", "Реактивні системи залпового вогню", 1_936, R.drawable.loss_mlrs),
-    LossTotal("Air-defense systems", "Засоби протиповітряної оборони", 1_492, R.drawable.loss_air_defense),
-    LossTotal("Aircraft", "Літаки", 437, R.drawable.loss_aircraft),
-    LossTotal("Helicopters", "Гелікоптери", 353, R.drawable.loss_helicopters),
-    LossTotal("Unmanned aerial vehicles", "Безпілотні літальні апарати", 409_204, R.drawable.loss_uav),
-    LossTotal("Cruise missiles", "Крилаті ракети", 4_906, R.drawable.loss_cruise_missiles),
-    LossTotal("Ships and boats", "Кораблі та катери", 34, R.drawable.loss_ships),
-    LossTotal("Submarines", "Підводні човни", 2, R.drawable.loss_submarines),
-    LossTotal("Vehicles and fuel tanks", "Автомобілі та автоцистерни", 120_307, R.drawable.loss_transport),
-    LossTotal("Special equipment", "Спеціальна техніка", 4_420, R.drawable.loss_special_equipment),
-    LossTotal("Ground robotic systems", "Наземні робототехнічні комплекси", 1_907, R.drawable.loss_ground_robots),
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -124,23 +129,35 @@ fun TotalScreen(viewModel: OsintViewModel) {
     val specialOperationsSnapshot by produceState<SpecialOperationsSnapshot?>(initialValue = null, context) {
         value = AssetDataLoader.loadSpecialOperations(context)
     }
-
-    val title = when (selectedTab) {
-        TotalTab.TOTAL -> if (isUk) "ЗАГАЛЬНІ ВТРАТИ" else "TOTAL"
-        TotalTab.SPECIAL_OPERATIONS -> if (isUk) "СПЕЦІАЛЬНІ ОПЕРАЦІЇ" else "SPECIAL OPERATIONS"
+    val lossTotalsSnapshot by produceState<LossTotalsSnapshot?>(initialValue = null, context) {
+        value = AssetDataLoader.loadLossTotals(context)
     }
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        text = title,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        fontFamily = FontFamily.Monospace,
-                        color = MaterialTheme.colorScheme.onSurface,
-                    )
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        Text(
+                            text = "BLACK SWAN",
+                            color = if (isDarkTheme) Color.White else Color(0xFF020617),
+                            fontSize = 18.sp,
+                            lineHeight = 20.sp,
+                            fontWeight = FontWeight.Black,
+                            textAlign = TextAlign.Center,
+                        )
+                        Text(
+                            text = "WAR IMPACT MAP",
+                            color = Color(0xFFEF4444),
+                            fontSize = 11.sp,
+                            lineHeight = 13.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            textAlign = TextAlign.Center,
+                        )
+                    }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.background,
@@ -171,6 +188,8 @@ fun TotalScreen(viewModel: OsintViewModel) {
             when (selectedTab) {
                 TotalTab.TOTAL -> TotalLossesContent(
                     isUk = isUk,
+                    isDarkTheme = isDarkTheme,
+                    snapshot = lossTotalsSnapshot,
                     format = format,
                     uriHandler = uriHandler,
                 )
@@ -188,9 +207,28 @@ fun TotalScreen(viewModel: OsintViewModel) {
 @Composable
 private fun TotalLossesContent(
     isUk: Boolean,
+    isDarkTheme: Boolean,
+    snapshot: LossTotalsSnapshot?,
     format: NumberFormat,
     uriHandler: androidx.compose.ui.platform.UriHandler,
 ) {
+    val lossTotals = remember(snapshot) {
+        snapshot?.totals.orEmpty().map { entry ->
+            LossTotal(
+                key = entry.key,
+                en = entry.labelEn,
+                uk = entry.labelUk,
+                value = entry.value,
+                iconRes = lossIconRes(entry.key),
+            )
+        }
+    }
+    val asOfText = when {
+        snapshot == null -> if (isUk) "Дані тимчасово недоступні" else "Data temporarily unavailable"
+        isUk -> "Станом на ${snapshot.asOfDateUk}"
+        else -> "As of ${snapshot.asOfDateEn}"
+    }
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -207,7 +245,7 @@ private fun TotalLossesContent(
                 )
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    text = if (isUk) "Станом на 15 липня 2026 року · зростаючим підсумком" else "As of 15 July 2026 · cumulative totals",
+                    text = asOfText,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontSize = 12.sp,
                 )
@@ -215,7 +253,7 @@ private fun TotalLossesContent(
         }
 
         items(lossTotals) { loss ->
-            LossTotalCard(loss = loss, isUk = isUk, format = format)
+            LossTotalCard(loss = loss, isUk = isUk, isDarkTheme = isDarkTheme, format = format)
         }
 
         item {
@@ -308,6 +346,7 @@ private fun SpecialOperationsContent(
 private fun LossTotalCard(
     loss: LossTotal,
     isUk: Boolean,
+    isDarkTheme: Boolean,
     format: NumberFormat,
 ) {
     Card(
@@ -332,6 +371,7 @@ private fun LossTotalCard(
                 Image(
                     painter = painterResource(loss.iconRes),
                     contentDescription = if (isUk) loss.uk else loss.en,
+                    colorFilter = if (isDarkTheme) null else ColorFilter.tint(Color(0xFFEF4444)),
                     modifier = Modifier.size(27.dp),
                 )
             }
@@ -344,7 +384,7 @@ private fun LossTotalCard(
                     .padding(horizontal = 12.dp),
             )
             Text(
-                text = (if (loss.en == "Personnel") "≈ " else "") + format.format(loss.value),
+                text = (if (loss.key == "personnel") "≈ " else "") + format.format(loss.value),
                 color = MaterialTheme.colorScheme.onSurface,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,

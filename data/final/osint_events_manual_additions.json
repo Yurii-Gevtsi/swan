@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-10T06:12:04.568837Z",
+  "generatedAt": "2026-08-16T11:00:53.250506Z",
   "sourceFile": "manual_additions_and_special_narrative_events",
   "importTarget": "Room EventEntity",
-  "recordCount": 1294,
+  "recordCount": 1318,
   "skippedCount": 0,
   "events": [
     {
@@ -40671,6 +40671,822 @@
       "updatedAt": "2026-08-10T06:12:03Z"
     },
     {
+      "id": "event_20260810_wk_sibur_zapsibneftekhim_petrochemical_comp",
+      "status": "PUBLISHED",
+      "titleEn": "\"Sibur\" (ZapSibNeftekhim) petrochemical complex in Tobolsk",
+      "titleUk": "Нафтохімічний комплекс «Сибур» (ЗапСибНафтохім) у Тобольську",
+      "date": "2026-08-10",
+      "datePrecision": "DAY",
+      "category": "FUEL_SUPPLY_DISRUPTION",
+      "eventScope": "REGIONAL_INDICATOR",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Tyumen Oblast (generalized)",
+      "approximateLocationLabelUk": "Тюменська область (узагальнено)",
+      "lat": 58.15,
+      "lng": 68.26,
+      "radiusKm": 45,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "MULTI_SOURCE_CONFIRMED",
+      "severity": "HIGH",
+      "summaryEn": "According to Reuters and Russian media, Russia's largest petrochemical complex \"Sibur\" (ZapSibNeftekhim) in Tobolsk, Tyumen Oblast, halted operations after a drone attack on 10 August. Location generalized to oblast level.",
+      "summaryUk": "За повідомленнями Reuters і російських ЗМІ, найбільший нафтохімічний комплекс рф «Сибур» (ЗапСибНафтохім) у Тобольську, Тюменська область, припинив роботу після атаки безпілотників 10 серпня. Локацію узагальнено до рівня області.",
+      "impactTags": "Petrochemical, Tyumen, Fuel Production, Sibur",
+      "sources": "source_ukrainska_pravda_reuters_2026_08_10",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T13:16:46Z",
+      "updatedAt": "2026-08-15T13:16:46Z"
+    },
+    {
+      "id": "event_20260811_wk_wildberries_logistics_complex_near_voron",
+      "status": "PUBLISHED",
+      "titleEn": "Wildberries logistics complex near Voronezh",
+      "titleUk": "Логістичний комплекс Wildberries під Воронежем",
+      "date": "2026-08-11",
+      "datePrecision": "DAY",
+      "category": "INFRASTRUCTURE_DISRUPTION",
+      "eventScope": "TERRITORIAL_RUSSIA",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Voronezh Oblast (generalized)",
+      "approximateLocationLabelUk": "Воронезька область (узагальнено)",
+      "lat": 51.67,
+      "lng": 39.21,
+      "radiusKm": 40,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "MULTI_SOURCE_CONFIRMED",
+      "severity": "HIGH",
+      "summaryEn": "Reports indicate that overnight on 11 August two warehouses (16,000 and 20,000 sq. m) of a Wildberries logistics complex near Voronezh were hit, with one fatality and injuries reported. Location generalized to oblast level.",
+      "summaryUk": "За повідомленнями, у ніч на 11 серпня уражено два склади (площею 16 і 20 тис. кв. м) логістичного комплексу Wildberries під Воронежем; є загиблий і поранені. Локацію узагальнено до рівня області.",
+      "impactTags": "Logistics, Warehouse, Voronezh, Wildberries",
+      "sources": "source_ukrainska_pravda_2026_08_11",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T13:16:46Z",
+      "updatedAt": "2026-08-15T13:16:46Z"
+    },
+    {
+      "id": "event_20260811_wk_orsknefteorgsintez_refinery_in_orsk",
+      "status": "PUBLISHED",
+      "titleEn": "\"Orsknefteorgsintez\" refinery in Orsk",
+      "titleUk": "НПЗ «Орскнафтооргсинтез» в Орську",
+      "date": "2026-08-11",
+      "datePrecision": "DAY",
+      "category": "FUEL_SUPPLY_DISRUPTION",
+      "eventScope": "REGIONAL_INDICATOR",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Orenburg Oblast (generalized)",
+      "approximateLocationLabelUk": "Оренбурзька область (узагальнено)",
+      "lat": 51.2,
+      "lng": 58.47,
+      "radiusKm": 45,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "OFFICIAL_CONFIRMED",
+      "severity": "HIGH",
+      "summaryEn": "The General Staff confirmed a strike on the Orsknefteorgsintez refinery in Orsk, Orenburg Oblast, on 11 August; the plant fully halted operations, with repairs estimated to take up to six months. Location generalized to oblast level.",
+      "summaryUk": "Генштаб підтвердив ураження НПЗ «Орскнафтооргсинтез» в Орську, Оренбурзька область, 11 серпня; завод повністю зупинився, ремонт триватиме, за оцінками, до пів року. Локацію узагальнено до рівня області.",
+      "impactTags": "Refinery, Orenburg, Fuel Production, Orsk",
+      "sources": "source_ukrainska_pravda_2026_08_11_2",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T13:16:46Z",
+      "updatedAt": "2026-08-15T13:16:46Z"
+    },
+    {
+      "id": "event_20260811_wk_komsomolsk_rosneft_refinery_in_komsomols",
+      "status": "PUBLISHED",
+      "titleEn": "Komsomolsk (Rosneft) refinery in Komsomolsk-on-Amur",
+      "titleUk": "Комсомольський НПЗ «Роснєфті» у Комсомольську-на-Амурі",
+      "date": "2026-08-11",
+      "datePrecision": "DAY",
+      "category": "FUEL_SUPPLY_DISRUPTION",
+      "eventScope": "REGIONAL_INDICATOR",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Khabarovsk Krai (generalized)",
+      "approximateLocationLabelUk": "Хабаровський край (узагальнено)",
+      "lat": 50.55,
+      "lng": 137.0,
+      "radiusKm": 45,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "MEDIA_REPORTED_WITH_OFFICIAL_REFERENCE",
+      "severity": "HIGH",
+      "summaryEn": "Reports indicate that overnight on 11 August the Komsomolsk (Rosneft) refinery in Komsomolsk-on-Amur, Khabarovsk Krai, caught fire following a drone attack. Location generalized to krai level.",
+      "summaryUk": "За повідомленнями, у ніч на 11 серпня загорівся Комсомольський НПЗ компанії «Роснєфть» у Комсомольську-на-Амурі, Хабаровський край, після атаки безпілотників. Локацію узагальнено до рівня краю.",
+      "impactTags": "Refinery, Khabarovsk, Fuel Production, Rosneft",
+      "sources": "source_liga_net_2026_08_11",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T13:16:46Z",
+      "updatedAt": "2026-08-15T13:16:46Z"
+    },
+    {
+      "id": "event_20260812_wk_four_russian_navy_vessels_in_novorossiys",
+      "status": "PUBLISHED",
+      "titleEn": "Four Russian navy vessels in Novorossiysk",
+      "titleUk": "Чотири військові кораблі рф у Новоросійську",
+      "date": "2026-08-12",
+      "datePrecision": "DAY",
+      "category": "MARITIME_ASSET_DISRUPTION",
+      "eventScope": "MARITIME",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Krasnodar Krai (generalized)",
+      "approximateLocationLabelUk": "Краснодарський край (узагальнено)",
+      "lat": 44.72,
+      "lng": 37.77,
+      "radiusKm": 40,
+      "precision": "MARITIME_REGIONAL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "OFFICIAL_CONFIRMED",
+      "severity": "HIGH",
+      "summaryEn": "Ukrainian forces struck four Russian navy vessels in Novorossiysk, Krasnodar Krai, overnight on 12 August, including Kalibr-missile carriers, frigates and a minesweeper. Location generalized to krai level.",
+      "summaryUk": "Сили оборони уразили в Новоросійську, Краснодарський край, у ніч на 12 серпня чотири військові кораблі рф, серед них носії ракет «Калібр», фрегати і тральщик. Локацію узагальнено до рівня краю.",
+      "impactTags": "Navy, Novorossiysk, Krasnodar, Frigate",
+      "sources": "source_ukrainska_pravda_2026_08_12",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T13:16:46Z",
+      "updatedAt": "2026-08-15T13:16:46Z"
+    },
+    {
+      "id": "event_20260812_wk_two_grain_terminals_at_the_port_of_novor",
+      "status": "PUBLISHED",
+      "titleEn": "Two grain terminals at the Port of Novorossiysk",
+      "titleUk": "Два зернові термінали в порту Новоросійськ",
+      "date": "2026-08-12",
+      "datePrecision": "DAY",
+      "category": "INFRASTRUCTURE_DISRUPTION",
+      "eventScope": "TERRITORIAL_RUSSIA",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Krasnodar Krai (generalized)",
+      "approximateLocationLabelUk": "Краснодарський край (узагальнено)",
+      "lat": 44.68,
+      "lng": 37.82,
+      "radiusKm": 40,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "MEDIA_REPORTED_WITH_OFFICIAL_REFERENCE",
+      "severity": "MEDIUM",
+      "summaryEn": "Reports indicate that drone strikes on 12 August forced Russia's two largest grain terminals in Novorossiysk, Krasnodar Krai, to halt operations. Location generalized to krai level.",
+      "summaryUk": "За повідомленнями, у Новоросійську, Краснодарський край, через атаки безпілотників 12 серпня зупинили роботу два найбільші зернові термінали рф. Локацію узагальнено до рівня краю.",
+      "impactTags": "Port, Grain Terminal, Novorossiysk, Krasnodar",
+      "sources": "source_ekonomichna_pravda_2026_08_12",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T13:16:46Z",
+      "updatedAt": "2026-08-15T13:16:46Z"
+    },
+    {
+      "id": "event_20260814_wk_russian_drone_command_posts_in_kursk_obl",
+      "status": "PUBLISHED",
+      "titleEn": "Russian drone command posts in Kursk Oblast",
+      "titleUk": "Пункти управління БпЛА рф у Курській області",
+      "date": "2026-08-14",
+      "datePrecision": "DAY",
+      "category": "MILITARY_ASSET_DISRUPTION",
+      "eventScope": "MILITARY_ASSET",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Kursk Oblast (generalized)",
+      "approximateLocationLabelUk": "Курська область (узагальнено)",
+      "lat": 51.73,
+      "lng": 36.19,
+      "radiusKm": 40,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "OFFICIAL_CONFIRMED",
+      "severity": "MEDIUM",
+      "summaryEn": "Ukrainian forces struck two Russian drone command posts in Kursk Oblast (near the villages of Volfino and Hordiivka) overnight on 14 August. Location generalized to oblast level.",
+      "summaryUk": "Сили оборони уразили два пункти управління безпілотниками рф у Курській області (у районах сіл Вольфіно та Гордіївка) у ніч на 14 серпня. Локацію узагальнено до рівня області.",
+      "impactTags": "Command Post, Kursk, Drone Operations",
+      "sources": "source_ukrainska_pravda_2026_08_14",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T13:16:46Z",
+      "updatedAt": "2026-08-15T13:16:46Z"
+    },
+    {
+      "id": "event_20260813_wk_gazprom_neftekhim_salavat_refinery_in_ba",
+      "status": "PUBLISHED",
+      "titleEn": "\"Gazprom Neftekhim Salavat\" refinery in Bashkortostan",
+      "titleUk": "НПЗ «Газпром нафтохім Салават» у Башкортостані",
+      "date": "2026-08-13",
+      "datePrecision": "DAY",
+      "category": "FUEL_SUPPLY_DISRUPTION",
+      "eventScope": "REGIONAL_INDICATOR",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Republic of Bashkortostan (generalized)",
+      "approximateLocationLabelUk": "Республіка Башкортостан (узагальнено)",
+      "lat": 53.36,
+      "lng": 55.91,
+      "radiusKm": 40,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "OFFICIAL_CONFIRMED",
+      "severity": "HIGH",
+      "summaryEn": "The General Staff confirmed a strike on the \"Gazprom Neftekhim Salavat\" refinery in the city of Salavat, Bashkortostan, on the morning of 13 August. Location generalized to republic level.",
+      "summaryUk": "Генштаб підтвердив ураження НПЗ «Газпром нафтохім Салават» у місті Салават, Башкортостан, вранці 13 серпня. Локацію узагальнено до рівня республіки.",
+      "impactTags": "Refinery, Bashkortostan, Fuel Production, Salavat",
+      "sources": "source_liga_net_2026_08_13",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T13:16:46Z",
+      "updatedAt": "2026-08-15T13:16:46Z"
+    },
+    {
+      "id": "event_20260813_wk_wildberries_logistics_center_in_chishmy",
+      "status": "PUBLISHED",
+      "titleEn": "Wildberries logistics center in Chishmy district, Bashkortostan",
+      "titleUk": "Логістичний центр Wildberries у Чишмінському районі Башкортостану",
+      "date": "2026-08-13",
+      "datePrecision": "DAY",
+      "category": "INFRASTRUCTURE_DISRUPTION",
+      "eventScope": "TERRITORIAL_RUSSIA",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Republic of Bashkortostan (generalized)",
+      "approximateLocationLabelUk": "Республіка Башкортостан (узагальнено)",
+      "lat": 54.58,
+      "lng": 55.14,
+      "radiusKm": 35,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "MEDIA_REPORTED_WITH_OFFICIAL_REFERENCE",
+      "severity": "MEDIUM",
+      "summaryEn": "Reports indicate that on 13 August debris from a downed drone hit an unfinished Wildberries logistics center in the Chishmy district of Bashkortostan, injuring two people. Location generalized to republic level.",
+      "summaryUk": "За повідомленнями, 13 серпня уламки збитого безпілотника уразили недобудований логістичний центр Wildberries у Чишмінському районі Башкортостану; двоє поранених. Локацію узагальнено до рівня республіки.",
+      "impactTags": "Logistics, Warehouse, Bashkortostan, Wildberries",
+      "sources": "source_liga_net_2026_08_13",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T13:16:46Z",
+      "updatedAt": "2026-08-15T13:16:46Z"
+    },
+    {
+      "id": "event_20260814_wk_wildberries_warehouse_in_kalininsky_dist",
+      "status": "PUBLISHED",
+      "titleEn": "Wildberries warehouse in Kalininsky district, Tver Oblast",
+      "titleUk": "Склад Wildberries у Калінінському окрузі Тверської області",
+      "date": "2026-08-14",
+      "datePrecision": "DAY",
+      "category": "INFRASTRUCTURE_DISRUPTION",
+      "eventScope": "TERRITORIAL_RUSSIA",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Tver Oblast (generalized)",
+      "approximateLocationLabelUk": "Тверська область (узагальнено)",
+      "lat": 56.86,
+      "lng": 35.9,
+      "radiusKm": 35,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "MEDIA_REPORTED_WITH_OFFICIAL_REFERENCE",
+      "severity": "LOW",
+      "summaryEn": "Reports indicate that overnight on 14 August debris from a downed drone damaged the wall of a Wildberries warehouse in the Kalininsky district of Tver Oblast. Location generalized to oblast level.",
+      "summaryUk": "За повідомленнями, у ніч на 14 серпня уламки збитого безпілотника пошкодили стіну складу Wildberries у Калінінському окрузі Тверської області. Локацію узагальнено до рівня області.",
+      "impactTags": "Logistics, Warehouse, Tver, Wildberries",
+      "sources": "source_liga_net_2026_08_14",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T13:16:46Z",
+      "updatedAt": "2026-08-15T13:16:46Z"
+    },
+    {
+      "id": "event_20260814_wk_novatek_ust_luga_complex_in_leningrad_ob",
+      "status": "PUBLISHED",
+      "titleEn": "\"NOVATEK-Ust-Luga\" complex in Leningrad Oblast",
+      "titleUk": "Комплекс «НОВАТЕК-Усть-Луга» в Ленінградській області",
+      "date": "2026-08-14",
+      "datePrecision": "DAY",
+      "category": "FUEL_SUPPLY_DISRUPTION",
+      "eventScope": "REGIONAL_INDICATOR",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Leningrad Oblast (generalized)",
+      "approximateLocationLabelUk": "Ленінградська область (узагальнено)",
+      "lat": 59.65,
+      "lng": 28.35,
+      "radiusKm": 35,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "OFFICIAL_CONFIRMED",
+      "severity": "HIGH",
+      "summaryEn": "The General Staff confirmed a strike on the NOVATEK-Ust-Luga complex in Leningrad Oblast overnight on 14 August: two processing units were damaged and a fire broke out. Location generalized to oblast level.",
+      "summaryUk": "Генштаб підтвердив удар по комплексу «НОВАТЕК-Усть-Луга» в Ленінградській області в ніч на 14 серпня: пошкоджено дві переробні установки, виникла пожежа. Локацію узагальнено до рівня області.",
+      "impactTags": "Fuel Terminal, Leningrad, Ust-Luga, NOVATEK",
+      "sources": "source_ukrainska_pravda_2026_08_14_2",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T13:16:46Z",
+      "updatedAt": "2026-08-15T13:16:46Z"
+    },
+    {
+      "id": "event_20260815_wk_progress_rocket_and_space_center_in_sama",
+      "status": "PUBLISHED",
+      "titleEn": "\"Progress\" Rocket and Space Center in Samara",
+      "titleUk": "Ракетно-космічний центр «Прогрес» у Самарі",
+      "date": "2026-08-15",
+      "datePrecision": "DAY",
+      "category": "INDUSTRIAL_DISRUPTION",
+      "eventScope": "TERRITORIAL_RUSSIA",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Samara Oblast (generalized)",
+      "approximateLocationLabelUk": "Самарська область (узагальнено)",
+      "lat": 53.2,
+      "lng": 50.15,
+      "radiusKm": 45,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "OFFICIAL_CONFIRMED",
+      "severity": "HIGH",
+      "summaryEn": "The General Staff confirmed that overnight on 15 August Ukrainian forces struck the Progress Rocket and Space Center in Samara, which produces Soyuz rockets, using \"Flamingo\" missiles. Location generalized to oblast level.",
+      "summaryUk": "Генштаб підтвердив, що в ніч на 15 серпня ЗСУ ракетами «Фламінго» вдарили по ракетно-космічному центру «Прогрес» у Самарі, де виробляють ракети «Союз». Локацію узагальнено до рівня області.",
+      "impactTags": "Defense Industry, Samara, Rocket Production, Progress",
+      "sources": "source_ukrainska_pravda_2026_08_15",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T13:16:46Z",
+      "updatedAt": "2026-08-15T13:16:46Z"
+    },
+    {
+      "id": "event_20260815_wk_savasleyka_airfield_in_nizhny_novgorod_o",
+      "status": "PUBLISHED",
+      "titleEn": "\"Savasleyka\" airfield in Nizhny Novgorod Oblast",
+      "titleUk": "Аеродром «Саваслейка» у Нижньогородській області",
+      "date": "2026-08-15",
+      "datePrecision": "DAY",
+      "category": "MILITARY_ASSET_DISRUPTION",
+      "eventScope": "MILITARY_ASSET",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Nizhny Novgorod Oblast (generalized)",
+      "approximateLocationLabelUk": "Нижньогородська область (узагальнено)",
+      "lat": 55.28,
+      "lng": 42.36,
+      "radiusKm": 35,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "OFFICIAL_CONFIRMED",
+      "severity": "HIGH",
+      "summaryEn": "The General Staff confirmed that overnight on 15 August Ukrainian forces struck the Savasleyka airfield in Nizhny Novgorod Oblast, home to MiG-31K carriers of Kinzhal missiles. Location generalized to oblast level.",
+      "summaryUk": "Генштаб підтвердив, що в ніч на 15 серпня ЗСУ уразили аеродром «Саваслейка» у Нижньогородській області, де базуються носії ракет «Кинджал» МіГ-31К. Локацію узагальнено до рівня області.",
+      "impactTags": "Airfield, Nizhny Novgorod, Kinzhal, MiG-31K",
+      "sources": "source_ukrainska_pravda_2026_08_15",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T13:16:46Z",
+      "updatedAt": "2026-08-15T13:16:46Z"
+    },
+    {
+      "id": "event_20260815_wk_sheskharis_terminal_in_novorossiysk",
+      "status": "PUBLISHED",
+      "titleEn": "\"Sheskharis\" terminal in Novorossiysk",
+      "titleUk": "Термінал «Шесхаріс» у Новоросійську",
+      "date": "2026-08-15",
+      "datePrecision": "DAY",
+      "category": "FUEL_SUPPLY_DISRUPTION",
+      "eventScope": "REGIONAL_INDICATOR",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Krasnodar Krai (generalized)",
+      "approximateLocationLabelUk": "Краснодарський край (узагальнено)",
+      "lat": 44.76,
+      "lng": 37.83,
+      "radiusKm": 35,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "MEDIA_REPORTED_WITH_OFFICIAL_REFERENCE",
+      "severity": "MEDIUM",
+      "summaryEn": "Reports indicate that the Sheskharis oil terminal in Novorossiysk, Krasnodar Krai, suspended operations following a drone attack on 15 August. Location generalized to krai level.",
+      "summaryUk": "За повідомленнями, нафтовий термінал «Шесхаріс» у Новоросійську, Краснодарський край, призупинив роботу після атаки безпілотників 15 серпня. Локацію узагальнено до рівня краю.",
+      "impactTags": "Fuel Terminal, Novorossiysk, Krasnodar, Sheskharis",
+      "sources": "source_ukrainska_pravda_2026_08_15_2",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T13:16:46Z",
+      "updatedAt": "2026-08-15T13:16:46Z"
+    },
+    {
+      "id": "event_20260810_wk_power_outage_in_gelendzhik_and_novorossi",
+      "status": "PUBLISHED",
+      "titleEn": "Power outage in Gelendzhik and Novorossiysk",
+      "titleUk": "Відключення електропостачання в Геленджику і Новоросійську",
+      "date": "2026-08-10",
+      "datePrecision": "DAY",
+      "category": "INFRASTRUCTURE_DISRUPTION",
+      "eventScope": "TERRITORIAL_RUSSIA",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Krasnodar Krai (generalized)",
+      "approximateLocationLabelUk": "Краснодарський край (узагальнено)",
+      "lat": 44.56,
+      "lng": 38.08,
+      "radiusKm": 40,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "MEDIA_REPORTED_WITH_OFFICIAL_REFERENCE",
+      "severity": "LOW",
+      "summaryEn": "Reports indicate that the cities of Gelendzhik and Novorossiysk, Krasnodar Krai, lost power on 10 August due to the threat of a drone attack. Location generalized to krai level.",
+      "summaryUk": "За повідомленнями, міста Геленджик і Новоросійськ, Краснодарський край, 10 серпня залишились без світла через загрозу атаки безпілотників. Локацію узагальнено до рівня краю.",
+      "impactTags": "Power Outage, Krasnodar, Novorossiysk, Gelendzhik",
+      "sources": "source_ekonomichna_pravda_2026_08_10",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T13:16:46Z",
+      "updatedAt": "2026-08-15T13:16:46Z"
+    },
+    {
+      "id": "event_20260812_wk_fuel_oil_terminal_at_the_port_of_novoros",
+      "status": "PUBLISHED",
+      "titleEn": "Fuel-oil terminal at the Port of Novorossiysk",
+      "titleUk": "Мазутний термінал порту Новоросійськ",
+      "date": "2026-08-12",
+      "datePrecision": "DAY",
+      "category": "FUEL_SUPPLY_DISRUPTION",
+      "eventScope": "REGIONAL_INDICATOR",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Krasnodar Krai (generalized)",
+      "approximateLocationLabelUk": "Краснодарський край (узагальнено)",
+      "lat": 44.7,
+      "lng": 37.8,
+      "radiusKm": 40,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "MEDIA_REPORTED_WITH_OFFICIAL_REFERENCE",
+      "severity": "MEDIUM",
+      "summaryEn": "According to OSINT analysts, a fuel-oil terminal at the Port of Novorossiysk, Krasnodar Krai, was struck overnight on 12 August. Location generalized to krai level.",
+      "summaryUk": "За повідомленнями OSINT-аналітиків, у Новоросійську, Краснодарський край, у ніч на 12 серпня уражено мазутний термінал порту. Локацію узагальнено до рівня краю.",
+      "impactTags": "Port, Fuel Terminal, Novorossiysk, Krasnodar",
+      "sources": "source_unian_2026_08_12",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T13:16:46Z",
+      "updatedAt": "2026-08-15T13:16:46Z"
+    },
+    {
+      "id": "event_20260811_wk_fuel_shortage_in_achinsk_district",
+      "status": "PUBLISHED",
+      "titleEn": "Fuel shortage in Achinsk district",
+      "titleUk": "Дефіцит пального в Ачинському районі",
+      "date": "2026-08-11",
+      "datePrecision": "DAY",
+      "category": "FUEL_SUPPLY_DISRUPTION",
+      "eventScope": "REGIONAL_INDICATOR",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Krasnoyarsk Krai (generalized)",
+      "approximateLocationLabelUk": "Красноярський край (узагальнено)",
+      "lat": 56.27,
+      "lng": 90.5,
+      "radiusKm": 35,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "RUSSIAN_OFFICIAL_STATEMENT",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summaryEn": "According to Achinsk district deputy head Natalya Grigoryeva, 13 of 47 local gas stations are out of service, with a shortage of 294 tons of diesel and 16.6 tons of AI-92 gasoline.",
+      "summaryUk": "За заявою заступниці голови Ачинського району Наталії Григор'євої, 13 з 47 АЗС району не працюють, дефіцит становить 294 т дизпалива і 16.6 т бензину АІ-92.",
+      "impactTags": "Fuel Shortage, Achinsk, Krasnoyarsk Krai",
+      "sources": "source_the_moscow_times_2026_08_11",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T14:34:18Z",
+      "updatedAt": "2026-08-15T14:34:18Z"
+    },
+    {
+      "id": "event_20260811_wk_gasoline_sale_restrictions_in_bashkortos",
+      "status": "PUBLISHED",
+      "titleEn": "Gasoline sale restrictions in Bashkortostan",
+      "titleUk": "Обмеження продажу бензину в Башкортостані",
+      "date": "2026-08-11",
+      "datePrecision": "DAY",
+      "category": "FUEL_SUPPLY_DISRUPTION",
+      "eventScope": "REGIONAL_INDICATOR",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Bashkortostan (generalized)",
+      "approximateLocationLabelUk": "Башкортостан (узагальнено)",
+      "lat": 54.73,
+      "lng": 55.94,
+      "radiusKm": 60,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "RUSSIAN_OFFICIAL_STATEMENT",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summaryEn": "Per Bashkortostan's Ministry of Industry and Economy, sales of gasoline in jerry cans were temporarily banned; three \"red zone\" districts were designated (Baltachevsky, Iglinsky, Ilishevsky), and 7 of 26 gas stations in Sterlitamak were closed.",
+      "summaryUk": "За даними Мінпромекономіки Башкортостану, тимчасово заборонено продаж бензину в каністри; визначено три \"червоні зони\" (Балтачевський, Іглінський, Ілішевський райони), у Стерлітамаку закрито 7 з 26 АЗС.",
+      "impactTags": "Fuel Shortage, Bashkortostan, Sterlitamak",
+      "sources": "source_the_moscow_times_2026_08_11",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T14:34:18Z",
+      "updatedAt": "2026-08-15T14:34:18Z"
+    },
+    {
+      "id": "event_20260811_wk_fuel_shortage_in_lipetsk_oblast",
+      "status": "PUBLISHED",
+      "titleEn": "Fuel shortage in Lipetsk Oblast",
+      "titleUk": "Дефіцит пального в Липецькій області",
+      "date": "2026-08-11",
+      "datePrecision": "DAY",
+      "category": "FUEL_SUPPLY_DISRUPTION",
+      "eventScope": "REGIONAL_INDICATOR",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Lipetsk Oblast (generalized)",
+      "approximateLocationLabelUk": "Липецька область (узагальнено)",
+      "lat": 52.61,
+      "lng": 39.6,
+      "radiusKm": 40,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "RUSSIAN_OFFICIAL_STATEMENT",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summaryEn": "Governor Igor Artamonov reported an acute fuel shortage in the oblast, forecast to last 1-2 weeks, and urged residents to reduce trips.",
+      "summaryUk": "Губернатор Ігор Артамонов заявив про гострий дефіцит пального в області, за прогнозом ситуація триватиме 1-2 тижні, закликав жителів скоротити поїздки.",
+      "impactTags": "Fuel Shortage, Lipetsk",
+      "sources": "source_the_moscow_times_2026_08_11",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T14:34:18Z",
+      "updatedAt": "2026-08-15T14:34:18Z"
+    },
+    {
+      "id": "event_20260811_wk_gasoline_shortage_in_sochi",
+      "status": "PUBLISHED",
+      "titleEn": "Gasoline shortage in Sochi",
+      "titleUk": "Дефіцит бензину в Сочі",
+      "date": "2026-08-11",
+      "datePrecision": "DAY",
+      "category": "FUEL_SUPPLY_DISRUPTION",
+      "eventScope": "REGIONAL_INDICATOR",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Sochi, Krasnodar Krai (generalized)",
+      "approximateLocationLabelUk": "Сочі, Краснодарський край (узагальнено)",
+      "lat": 43.6,
+      "lng": 39.73,
+      "radiusKm": 30,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "RUSSIAN_OFFICIAL_STATEMENT",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summaryEn": "According to the municipal administration, gasoline is available at only two-thirds of Sochi's gas stations, and residents were advised to use public transport.",
+      "summaryUk": "За даними міської адміністрації, бензин наявний лише на двох третинах АЗС Сочі, мешканцям рекомендовано користуватись громадським транспортом.",
+      "impactTags": "Fuel Shortage, Sochi, Krasnodar Krai",
+      "sources": "source_the_moscow_times_2026_08_11",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T14:34:18Z",
+      "updatedAt": "2026-08-15T14:34:18Z"
+    },
+    {
+      "id": "event_20260811_wk_fuel_supply_problems_at_saratov_oblast_g",
+      "status": "PUBLISHED",
+      "titleEn": "Fuel supply problems at Saratov Oblast gas stations",
+      "titleUk": "Проблеми з паливом на АЗС Саратовської області",
+      "date": "2026-08-11",
+      "datePrecision": "DAY",
+      "category": "FUEL_SUPPLY_DISRUPTION",
+      "eventScope": "REGIONAL_INDICATOR",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Saratov Oblast (generalized)",
+      "approximateLocationLabelUk": "Саратовська область (узагальнено)",
+      "lat": 51.53,
+      "lng": 46.03,
+      "radiusKm": 40,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "RUSSIAN_OFFICIAL_STATEMENT",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "OFFICIAL_STATEMENT_ONLY",
+      "severity": "MEDIUM",
+      "summaryEn": "According to oblast Duma deputies, fuel pumps reserved for emergency services are being used by unauthorized individuals, and some Lukoil stations have run out of fuel.",
+      "summaryUk": "За словами депутатів обласної думи, окремі колонки, виділені для екстрених служб, використовуються сторонніми особами; на частині АЗС \"Лукойл\" паливо закінчилось.",
+      "impactTags": "Fuel Shortage, Saratov",
+      "sources": "source_the_moscow_times_2026_08_11",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-15T14:34:18Z",
+      "updatedAt": "2026-08-15T14:34:18Z"
+    },
+    {
+      "id": "event_20260816_wk_kamensky_combine_solid_rocket_fuel_produ",
+      "status": "PUBLISHED",
+      "titleEn": "Kamensky Combine (solid rocket fuel production)",
+      "titleUk": "Комбінат «Каменський» (виробництво твердого ракетного палива)",
+      "date": "2026-08-16",
+      "datePrecision": "DAY",
+      "category": "INDUSTRIAL_DISRUPTION",
+      "eventScope": "TERRITORIAL_RUSSIA",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Rostov Oblast (generalized)",
+      "approximateLocationLabelUk": "Ростовська область (узагальнено)",
+      "lat": 48.317,
+      "lng": 40.267,
+      "radiusKm": 35,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "OFFICIAL_CONFIRMED",
+      "severity": "HIGH",
+      "summaryEn": "Overnight on 16 August, Ukraine's Defense Forces struck the Kamensky Combine in Kamensk-Shakhtinsky, Rostov region, which produces solid rocket fuel for Uragan, Smerch, Tornado-S MLRS munitions and other rocket systems. Ukraine's General Staff confirmed a fire at the plant.",
+      "summaryUk": "Уночі на 16 серпня Сили оборони України уразили комбінат «Каменський» у Каменськ-Шахтинському Ростовської області, що виробляє тверде ракетне паливо для боєприпасів РСЗВ «Ураган», «Смерч», «Торнадо-С» та інших ракетних систем. Генштаб підтвердив пожежу на підприємстві.",
+      "impactTags": "Rocket Fuel, Defense Industry, MLRS",
+      "sources": "source_ukrainska_pravda_2026_08_16",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-16T10:29:51Z",
+      "updatedAt": "2026-08-16T10:29:51Z"
+    },
+    {
+      "id": "event_20260816_wk_wildberries_logistics_complex_in_koledin",
+      "status": "PUBLISHED",
+      "titleEn": "Wildberries logistics complex in Koledino",
+      "titleUk": "Логістичний комплекс Wildberries у Коледіно",
+      "date": "2026-08-16",
+      "datePrecision": "DAY",
+      "category": "INFRASTRUCTURE_DISRUPTION",
+      "eventScope": "TERRITORIAL_RUSSIA",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Moscow Oblast (generalized)",
+      "approximateLocationLabelUk": "Московська область (узагальнено)",
+      "lat": 55.4297,
+      "lng": 37.5446,
+      "radiusKm": 35,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "MULTI_SOURCE_CONFIRMED",
+      "severity": "MEDIUM",
+      "summaryEn": "On the morning of 16 August, amid a massed drone attack on Moscow region, the largest Wildberries marketplace logistics complex (over 200,000 sq m) caught fire in the village of Koledino, Podolsk urban district. According to media reports, the Ukrainian side had not officially commented on the operation.",
+      "summaryUk": "Уранці 16 серпня, під час масованої атаки безпілотників на Московську область, загорівся найбільший логістичний комплекс маркетплейсу Wildberries (площею понад 200 тис. кв. м) у с. Коледіно, Подольський міський округ. За повідомленнями медіа, українська сторона офіційно результати операції не коментувала.",
+      "impactTags": "Wildberries, Warehouse Fire, Logistics",
+      "sources": "source_zaxid_net_2026_08_16",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-16T10:29:51Z",
+      "updatedAt": "2026-08-16T10:29:51Z"
+    },
+    {
+      "id": "event_20260816_wk_severnoye_domodedovo_logistics_complex_p",
+      "status": "PUBLISHED",
+      "titleEn": "\"Severnoye Domodedovo\" logistics complex (pharmaceutical warehouse)",
+      "titleUk": "Логістичний комплекс «Північне Домодєдово» (склад медикаментів)",
+      "date": "2026-08-16",
+      "datePrecision": "DAY",
+      "category": "INFRASTRUCTURE_DISRUPTION",
+      "eventScope": "TERRITORIAL_RUSSIA",
+      "theater": "RUSSIA_INTERNAL",
+      "regionId": null,
+      "federalDistrictId": null,
+      "maritimeAreaId": null,
+      "sanctionsJurisdictionId": null,
+      "approximateLocationLabelEn": "Moscow Oblast (generalized)",
+      "approximateLocationLabelUk": "Московська область (узагальнено)",
+      "lat": 55.438,
+      "lng": 37.7674,
+      "radiusKm": 35,
+      "precision": "REGION_LEVEL",
+      "assetId": null,
+      "actor": "UKRAINIAN_DEFENSE_FORCES",
+      "actorConfidence": "MEDIA_REPORTED",
+      "actorNote": "",
+      "verificationStatus": "MEDIA_REPORTED_WITH_OFFICIAL_REFERENCE",
+      "severity": "MEDIUM",
+      "summaryEn": "The same night of 16 August, warehouse No. 15 in the \"Severnoye Domodedovo\" production and logistics complex in Domodedovo, Moscow region, caught fire; it stored pharmaceuticals. According to media reports, the fire occurred amid a massed drone attack on Moscow region, officially referenced by Moscow's mayor.",
+      "summaryUk": "Тієї ж ночі на 16 серпня в м. Домодєдово Московської області загорівся склад №15 у виробничо-логістичному комплексі «Північне Домодєдово», де зберігалися медикаменти. За медійними даними, пожежа сталася на тлі масованої атаки безпілотників на Московську область, про яку офіційно повідомляв мер Москви.",
+      "impactTags": "Logistics, Pharmaceutical Warehouse, Fire",
+      "sources": "source_unian_2026_08_16",
+      "safetyNotes": "Location generalized. No exact coordinates or tactical details.",
+      "createdAt": "2026-08-16T11:00:50Z",
+      "updatedAt": "2026-08-16T11:00:50Z"
+    },
+    {
       "id": "event_20220414_moskva_cruiser_sunk",
       "status": "PUBLISHED",
       "titleEn": "Sinking of the missile cruiser \"Moskva\"",
@@ -41144,7 +41960,7 @@
       "sources": "source_naval_reference_489e568b4c485fb33bff",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-02-25T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220225_fast_boat_near_zmiinyi_island_2",
@@ -41178,7 +41994,7 @@
       "sources": "source_naval_reference_489e568b4c485fb33bff",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-02-25T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220225_landing_craft_near_kobleve",
@@ -41212,7 +42028,7 @@
       "sources": "source_naval_reference_489e568b4c485fb33bff",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-02-25T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220307_veliky_ustyug",
@@ -41246,7 +42062,7 @@
       "sources": "source_naval_reference_489e568b4c485fb33bff",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-03-07T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220321_p_436_raptor",
@@ -41280,7 +42096,7 @@
       "sources": "source_naval_reference_f1cf8e7cb31f3de9a482,source_naval_reference_38edcc0fa5decc1c6c04",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-03-21T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20220325_naval_caesar_kunikov_damage_001",
@@ -41314,7 +42130,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17,source_nv_ua_russian_ships_sunk_list_2024_02_14",
       "safetyNotes": "Generalized maritime-area record.",
       "createdAt": "2022-03-24T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20220325_naval_novocherkassk_damage_001",
@@ -41348,7 +42164,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17,source_nv_ua_russian_ships_sunk_list_2024_02_14",
       "safetyNotes": "Generalized maritime-area record.",
       "createdAt": "2022-03-24T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20220325_naval_saratov_loss_001",
@@ -41382,7 +42198,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17,source_nv_ua_russian_ships_sunk_list_2024_02_14",
       "safetyNotes": "Generalized maritime-area record. No city-level pin and no exact coordinates.",
       "createdAt": "2022-03-24T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220325_landing_craft_in_odesa_oblast_1",
@@ -41416,7 +42232,7 @@
       "sources": "source_naval_reference_489e568b4c485fb33bff",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-03-25T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220325_landing_craft_in_odesa_oblast_2",
@@ -41450,7 +42266,7 @@
       "sources": "source_naval_reference_489e568b4c485fb33bff",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-03-25T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220404_admiral_essen",
@@ -41484,7 +42300,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-04-04T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20220413_naval_moskva_loss_001",
@@ -41518,7 +42334,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17,source_nv_ua_russian_ships_sunk_list_2024_02_14",
       "safetyNotes": "Generalized Black Sea record. No exact coordinates.",
       "createdAt": "2022-04-13T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220422_rasul_gamzatov",
@@ -41552,7 +42368,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-04-22T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220502_d_310_bk_16",
@@ -41586,7 +42402,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-05-02T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220502_p_342_yunarmiyets_baltyki",
@@ -41620,7 +42436,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-05-02T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220505_d_144_serna",
@@ -41654,7 +42470,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-05-05T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220507_p_275",
@@ -41688,7 +42504,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-05-07T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220507_p_281_maksim_panin",
@@ -41722,7 +42538,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-05-07T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20220507_naval_serna_loss_001",
@@ -41756,7 +42572,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17,source_nv_ua_russian_ships_sunk_list_2024_02_14",
       "safetyNotes": "Generalized maritime-area record.",
       "createdAt": "2022-05-07T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20220507_naval_raptor_group_loss_001",
@@ -41790,7 +42606,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Grouped vessel record. No exact coordinates.",
       "createdAt": "2022-05-07T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220508_p_342_oleg_shipitsyn",
@@ -41824,7 +42640,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-05-08T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20220512_maritime_vsevolod_bobrov_damage_001",
@@ -41858,7 +42674,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17,source_nv_ua_russian_ships_sunk_list_2024_02_14",
       "safetyNotes": "Generalized maritime-area record.",
       "createdAt": "2022-05-12T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220601_landing_craft_in_the_dnipro_buh_estuary_1",
@@ -41892,7 +42708,7 @@
       "sources": "source_naval_reference_489e568b4c485fb33bff",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-06-01T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220601_landing_craft_in_the_dnipro_buh_estuary_2",
@@ -41926,7 +42742,7 @@
       "sources": "source_naval_reference_489e568b4c485fb33bff",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-06-01T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20220617_maritime_vasily_bekh_loss_001",
@@ -41960,7 +42776,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17,source_nv_ua_russian_ships_sunk_list_2024_02_14",
       "safetyNotes": "Generalized maritime-area record.",
       "createdAt": "2022-06-17T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220630_d_106_akula",
@@ -41994,7 +42810,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-06-30T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20220630_landing_craft_near_zmiinyi_island",
@@ -42028,7 +42844,7 @@
       "sources": "source_naval_reference_489e568b4c485fb33bff",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-06-30T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20221029_naval_admiral_makarov_damage_001",
@@ -42062,7 +42878,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Port/basing-area event generalized to maritime area.",
       "createdAt": "2022-10-29T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20221029_naval_ivan_golubets_damage_001",
@@ -42096,7 +42912,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Port/basing-area event generalized to maritime area.",
       "createdAt": "2022-10-29T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20221029_unidentified_warship",
@@ -42130,7 +42946,7 @@
       "sources": "source_naval_reference_558cf0a3100615aec640",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2022-10-29T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20230524_ivan_khurs",
@@ -42164,7 +42980,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2023-05-24T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20230804_p_349_suvorovets",
@@ -42198,7 +43014,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2023-08-04T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20230804_naval_olenegorsky_gornyak_damage_001",
@@ -42232,7 +43048,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17,source_nv_ua_russian_ships_sunk_list_2024_02_14",
       "safetyNotes": "Generalized Novorossiysk maritime-area record.",
       "createdAt": "2023-08-04T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20230804_sig",
@@ -42266,7 +43082,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2023-08-04T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20230903_project_ks_701_tunets_boat_1",
@@ -42300,7 +43116,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2023-09-03T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20230913_project_ks_701_tunets_boat_2",
@@ -42334,7 +43150,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2023-09-13T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20230913_naval_minsk_loss_001",
@@ -42368,7 +43184,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17,source_nv_ua_russian_ships_sunk_list_2024_02_14",
       "safetyNotes": "Basing-area event generalized to maritime area.",
       "createdAt": "2023-09-13T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20230913_naval_rostov_on_don_damage_001",
@@ -42402,7 +43218,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17,source_nv_ua_russian_ships_sunk_list_2024_02_14",
       "safetyNotes": "Basing-area event generalized to maritime area.",
       "createdAt": "2023-09-13T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20230914_samum",
@@ -42436,7 +43252,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2023-09-14T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20230914_sergey_kotov",
@@ -42470,7 +43286,7 @@
       "sources": "source_naval_reference_659ef68a793cea77ab0e,source_naval_reference_563c0de485501f3fe5fc",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2023-09-14T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20231011_naval_pavel_derzhavin_damage_001",
@@ -42504,7 +43320,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Generalized maritime-area record.",
       "createdAt": "2023-10-11T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20231012_professor_nikolay_muru",
@@ -42538,7 +43354,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2023-10-12T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20231013_naval_buyan_m_damage_001",
@@ -42572,7 +43388,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Generalized maritime-area record.",
       "createdAt": "2023-10-13T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20231026_vladimir_kozytskiy",
@@ -42606,7 +43422,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2023-10-26T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20231104_naval_askold_damage_001",
@@ -42640,7 +43456,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17,source_nv_ua_russian_ships_sunk_list_2024_02_14",
       "safetyNotes": "Shipyard/port event generalized to maritime area.",
       "createdAt": "2023-11-04T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20231110_naval_akula_loss_001",
@@ -42674,7 +43490,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Coastal event generalized to maritime area.",
       "createdAt": "2023-11-10T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20231110_naval_serna_loss_002",
@@ -42708,7 +43524,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Coastal event generalized to maritime area.",
       "createdAt": "2023-11-10T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20231226_naval_novocherkassk_loss_002",
@@ -42742,7 +43558,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17,source_nv_ua_russian_ships_sunk_list_2024_02_14",
       "safetyNotes": "Port event generalized to maritime area.",
       "createdAt": "2023-12-26T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20240131_naval_ivanovets_loss_001",
@@ -42776,7 +43592,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Generalized maritime-area record.",
       "createdAt": "2024-01-31T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20240214_naval_caesar_kunikov_loss_002",
@@ -42810,7 +43626,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17,source_nv_ua_russian_ships_sunk_list_2024_02_14",
       "safetyNotes": "Generalized maritime-area record.",
       "createdAt": "2024-02-14T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20240305_naval_sergey_kotov_loss_001",
@@ -42844,7 +43660,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Generalized maritime-area record.",
       "createdAt": "2024-03-05T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20240323_kostyantyn_olshansky",
@@ -42878,7 +43694,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2024-03-23T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20240324_maritime_ivan_khurs_damage_001",
@@ -42912,7 +43728,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Basing-area event generalized to maritime area.",
       "createdAt": "2024-03-23T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20240324_naval_azov_damage_001",
@@ -42946,7 +43762,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Basing-area event generalized to maritime area.",
       "createdAt": "2024-03-23T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20240324_naval_yamal_damage_001",
@@ -42980,7 +43796,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Basing-area event generalized to maritime area.",
       "createdAt": "2024-03-23T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20240407_serpukhov",
@@ -43014,7 +43830,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2024-04-07T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20240421_maritime_kommuna_damage_001",
@@ -43048,7 +43864,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Basing-area event generalized to maritime area.",
       "createdAt": "2024-04-21T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20240506_mangust",
@@ -43082,7 +43898,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2024-05-06T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20240519_naval_kovrovets_loss_001",
@@ -43116,7 +43932,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Basing-area event generalized to maritime area.",
       "createdAt": "2024-05-19T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20240519_naval_tsiklon_loss_001",
@@ -43150,7 +43966,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Basing-area event generalized to maritime area.",
       "createdAt": "2024-05-19T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20240530_project_ks_701_tunets_boat_3",
@@ -43184,7 +44000,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2024-05-30T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20240530_project_ks_701_tunets_boat_4",
@@ -43218,7 +44034,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2024-05-30T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20240606_saturn",
@@ -43252,7 +44068,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2024-06-06T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20240802_rostov_on_don",
@@ -43286,7 +44102,7 @@
       "sources": "source_naval_reference_003033578f4c65bcf83a",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2024-08-02T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20250401_naval_bk16_loss_001",
@@ -43320,7 +44136,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Coastal event generalized to maritime area.",
       "createdAt": "2025-04-01T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20250401_naval_raptor_damage_002",
@@ -43354,7 +44170,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Coastal event generalized to maritime area.",
       "createdAt": "2025-04-01T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20250828_naval_buyan_m_damage_002",
@@ -43388,7 +44204,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Generalized Novorossiysk maritime-area record.",
       "createdAt": "2025-08-28T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20251004_grad",
@@ -43422,7 +44238,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2025-10-04T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20251215_naval_varshavyanka_damage_001",
@@ -43456,7 +44272,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Generalized maritime-area record. Specific vessel identity requires manual review.",
       "createdAt": "2025-12-15T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20251219_rasul_gamzatov_project_22460_okhotnik",
@@ -43490,7 +44306,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2025-12-19T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20260212_bk_16_transport_landing_craft",
@@ -43524,7 +44340,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2026-02-12T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20260221_two_project_okhotnik_patrol_ships",
@@ -43558,7 +44374,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2026-02-21T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20260302_admiral_essen",
@@ -43592,7 +44408,7 @@
       "sources": "source_naval_reference_2d125288e6c26263da70",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2026-03-02T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20260302_project_12411m_missile_boat",
@@ -43626,7 +44442,7 @@
       "sources": "source_naval_reference_6294b00d6ca9f471dd8e",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2026-03-02T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20260302_naval_kasimov_damage_001",
@@ -43660,7 +44476,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Generalized Novorossiysk maritime-area record.",
       "createdAt": "2026-03-02T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20260302_naval_yeysk_damage_001",
@@ -43694,7 +44510,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Generalized Novorossiysk maritime-area record.",
       "createdAt": "2026-03-02T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20260302_naval_valentin_pikul_loss_001",
@@ -43728,7 +44544,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Generalized Novorossiysk maritime-area record.",
       "createdAt": "2026-03-02T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20260314_avangard",
@@ -43762,7 +44578,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2026-03-14T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20260314_slavyanin",
@@ -43796,7 +44612,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2026-03-14T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20260325_purga",
@@ -43830,7 +44646,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2026-03-25T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_event_20260406_naval_admiral_makarov_damage_002",
@@ -43864,7 +44680,7 @@
       "sources": "source_mod_ua_black_azov_fleet_losses_2026_04_17",
       "safetyNotes": "Generalized Novorossiysk maritime-area record.",
       "createdAt": "2026-04-06T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20260418_azov",
@@ -43898,7 +44714,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2026-04-18T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20260418_yamal",
@@ -43932,7 +44748,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2026-04-18T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20260503_karakurt",
@@ -43966,7 +44782,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2026-05-03T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     },
     {
       "id": "event_naval_registry_20260714_izumrud",
@@ -44000,7 +44816,7 @@
       "sources": "source_wiki_naval_losses_uk",
       "safetyNotes": "Generalized maritime-area record; not an exact strike coordinate.",
       "createdAt": "2026-07-14T00:00:00Z",
-      "updatedAt": "2026-08-10T00:00:00Z"
+      "updatedAt": "2026-08-16T00:00:00Z"
     }
   ]
 }

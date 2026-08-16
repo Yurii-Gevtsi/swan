@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-16T11:08:45Z",
+  "asOfDateUk": "16 серпня 2026 року",
+  "asOfDateEn": "16 August 2026",
+  "sourceName": "Мінфін (за даними Генштабу ЗСУ)",
+  "sourceUrl": "https://index.minfin.com.ua/ua/russian-invading/casualties/",
+  "totals": [
+    {
+      "key": "personnel",
+      "labelUk": "Особовий склад",
+      "labelEn": "Personnel",
+      "value": 1467320
+    },
+    {
+      "key": "tanks",
+      "labelUk": "Танки",
+      "labelEn": "Tanks",
+      "value": 12270
+    },
+    {
+      "key": "armored_vehicles",
+      "labelUk": "Бойові броньовані машини",
+      "labelEn": "Armored combat vehicles",
+      "value": 25151
+    },
+    {
+      "key": "artillery",
+      "labelUk": "Артилерійські системи",
+      "labelEn": "Artillery systems",
+      "value": 48007
+    },
+    {
+      "key": "mlrs",
+      "labelUk": "Реактивні системи залпового вогню",
+      "labelEn": "Multiple-launch rocket systems",
+      "value": 2034
+    },
+    {
+      "key": "air_defense",
+      "labelUk": "Засоби протиповітряної оборони",
+      "labelEn": "Air-defense systems",
+      "value": 1570
+    },
+    {
+      "key": "aircraft",
+      "labelUk": "Літаки",
+      "labelEn": "Aircraft",
+      "value": 439
+    },
+    {
+      "key": "helicopters",
+      "labelUk": "Гелікоптери",
+      "labelEn": "Helicopters",
+      "value": 354
+    },
+    {
+      "key": "uav",
+      "labelUk": "Безпілотні літальні апарати",
+      "labelEn": "Unmanned aerial vehicles",
+      "value": 463404
+    },
+    {
+      "key": "cruise_missiles",
+      "labelUk": "Крилаті ракети",
+      "labelEn": "Cruise missiles",
+      "value": 5007
+    },
+    {
+      "key": "ships",
+      "labelUk": "Кораблі та катери",
+      "labelEn": "Ships and boats",
+      "value": 35
+    },
+    {
+      "key": "submarines",
+      "labelUk": "Підводні човни",
+      "labelEn": "Submarines",
+      "value": 2
+    },
+    {
+      "key": "vehicles_fuel_tanks",
+      "labelUk": "Автомобілі та автоцистерни",
+      "labelEn": "Vehicles and fuel tanks",
+      "value": 134851
+    },
+    {
+      "key": "special_equipment",
+      "labelUk": "Спеціальна техніка",
+      "labelEn": "Special equipment",
+      "value": 4535
+    },
+    {
+      "key": "ground_robots",
+      "labelUk": "Наземні робототехнічні комплекси",
+      "labelEn": "Ground robotic systems",
+      "value": 2257
+    }
+  ]
+}

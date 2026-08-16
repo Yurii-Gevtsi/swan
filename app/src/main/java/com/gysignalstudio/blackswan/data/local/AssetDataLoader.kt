@@ -8,6 +8,7 @@ import com.gysignalstudio.blackswan.data.model.RegionAttackTotalsSnapshot
 import com.gysignalstudio.blackswan.data.model.FuelRestrictionsSnapshot
 import com.gysignalstudio.blackswan.data.model.RegionalBudgetStressSnapshot
 import com.gysignalstudio.blackswan.data.model.SpecialOperationsSnapshot
+import com.gysignalstudio.blackswan.data.model.LossTotalsSnapshot
 import com.gysignalstudio.blackswan.data.model.SourceEntity
 import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Moshi
@@ -60,6 +61,7 @@ object AssetDataLoader {
     private const val REGIONAL_BUDGET_STRESS_ASSET = "regional_budget_stress_2026.json"
     private const val WIKIPEDIA_CITATION_SOURCES_ASSET = "wikipedia_citation_sources.json"
     private const val SPECIAL_OPERATIONS_ASSET = "special_events_2022_2025.json"
+    private const val LOSS_TOTALS_ASSET = "loss_totals.json"
 
     private val moshi: Moshi by lazy {
         Moshi.Builder()
@@ -173,6 +175,16 @@ object AssetDataLoader {
             moshi.adapter(SpecialOperationsSnapshot::class.java).fromJson(json)
         } catch (error: Exception) {
             Log.e(TAG, "Failed to load $SPECIAL_OPERATIONS_ASSET", error)
+            null
+        }
+    }
+
+    fun loadLossTotals(context: Context): LossTotalsSnapshot? {
+        return try {
+            val json = readJson(context, LOSS_TOTALS_ASSET)
+            moshi.adapter(LossTotalsSnapshot::class.java).fromJson(json)
+        } catch (error: Exception) {
+            Log.e(TAG, "Failed to load $LOSS_TOTALS_ASSET", error)
             null
         }
     }
